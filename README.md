@@ -40,13 +40,13 @@ Sigue estos pasos para ejecutar localmente el proyecto en tu máquina:
 3. Instala las dependencias utilizando npm o Yarn:
 
     npm install
-    # O
+    O
     yarn install
 
 4. Ejecuta la aplicación en un entorno de desarrollo:
 
     npm run dev
-    # O
+    O
     yarn dev
 
 5. Abre tu navegador web y visita http://localhost:3000 para ver la aplicación en acción.

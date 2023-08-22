@@ -3,7 +3,7 @@ const products = [
   {
     id: 1,
     name: 'Nomad Pouch',
-    categoria: 'bolso',
+    categoria: 'tops',
     price: '$50',
     availability: 'White and Black',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-01.jpg',
@@ -52,7 +52,7 @@ const products = [
   {
     id: 2,
     name: 'Classic Backpack',
-    categoria: 'mochila',
+    categoria: 'pantalones',
     price: '$80',
     availability: 'Various colors',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-02.jpg',
@@ -93,7 +93,7 @@ const products = [
   {
     id: 3,
     name: 'Leather Tote Bag',
-    categoria: 'bolso',
+    categoria: 'vestidos',
     price: '$120',
     availability: 'Brown and Black',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-03.jpg',
@@ -134,7 +134,7 @@ const products = [
   {
     id: 4,
     name: 'Travel Duffel',
-    categoria: 'mochila',
+    categoria: 'tops',
     price: '$90',
     availability: 'Blue and Gray',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-04.jpg',
@@ -175,7 +175,7 @@ const products = [
   {
     id: 5,
     name: 'Everyday Tote',
-    categoria: 'bolso',
+    categoria: 'tops',
     price: '$65',
     availability: 'Various colors',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-05.jpg',
@@ -217,7 +217,7 @@ const products = [
   {
     id: 6,
     name: 'Weekend Backpack',
-    categoria: 'mochila',
+    categoria: 'tops',
     price: '$95',
     availability: 'Black and Gray',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-06.jpg',

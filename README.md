@@ -61,4 +61,4 @@ Este proyecto está bajo la Licencia XYZ. Para más detalles, consulta el archiv
 
 ---
 
-Esperamos que disfrutes explorando nuestro E-Commerce de Ropa. Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con nosotros. ¡Felices compras y happy coding! 🛍️💻
+Esperamos que disfrutes explorando nuestro E-Commerce de Ropa. Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con nosotros.🛍️💻

@@ -12,6 +12,7 @@ import { CartWidget } from '../../components/index'
 import { navigation } from '../../components/NavBar/constants'
 
 import { Link } from 'react-router-dom'
+import logoBlanco from "../../assets/logoBlanco.avif"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -129,7 +130,7 @@ const NavBar = () => {
                         <span className="sr-only">Your Company</span>
                         <img
                           className="h-8 w-auto"
-                          src="https://tailwindui.com/img/logos/mark.svg?color=white"
+                          src={logoBlanco}
                           alt=""
                         />
                       </Link>
@@ -230,7 +231,7 @@ const NavBar = () => {
                     {/* Logo (lg-) */}
                     <Link to="/" className="lg:hidden">
                       <span className="sr-only">Your Company</span>
-                      <img src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="" className="h-8 w-auto" />
+                      <img src={logoBlanco} alt="" className="h-8 w-auto" />
                     </Link>
 
                     <div className="flex flex-1 items-center justify-end">

@@ -35,6 +35,7 @@ const collections = [
     description: 'Be more productive than enterprise project managers with a single piece of paper.',
   },
 ]
+import logoBlanco from "../../assets/logoBlanco.avif"
 
 
 function classNames(...classes) {
@@ -143,7 +144,7 @@ export default function Home() {
         </Transition.Root>
 
         {/* Hero section */}
-        <div className="relative bg-gray-900">
+        <section className="relative bg-gray-900 h-screen">
           {/* Decorative image and overlay */}
           <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
             <img
@@ -168,7 +169,7 @@ export default function Home() {
                           <span className="sr-only">Your Company</span>
                           <img
                             className="h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=white"
+                            src={logoBlanco}
                             alt=""
                           />
                         </Link>
@@ -269,7 +270,7 @@ export default function Home() {
                       {/* Logo (lg-) */}
                       <Link to="#" className="lg:hidden">
                         <span className="sr-only">Your Company</span>
-                        <img src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="" className="h-8 w-auto" />
+                        <img src={logoBlanco} alt="" className="h-8 w-auto" />
                       </Link>
 
                       <div className="flex flex-1 items-center justify-end">
@@ -310,7 +311,7 @@ export default function Home() {
               Shop New Arrivals
             </Link>
           </div>
-        </div>
+        </section>
 
         <main>
           {/* Category section */}

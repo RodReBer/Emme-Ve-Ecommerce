@@ -14,21 +14,21 @@ import { categories } from '../Categorias/constants'
 
 const collections = [
   {
-    name: 'Handcrafted Collection',
+    name: 'Colección de verano',
     href: '#',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-collection-01.jpg',
     imageAlt: 'Brown leather key ring with brass metal loops and rivets on wood table.',
     description: 'Keep your phone, keys, and wallet together, so you can lose everything at once.',
   },
   {
-    name: 'Organized Desk Collection',
+    name: 'Colección de invierno',
     href: '#',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-collection-02.jpg',
     imageAlt: 'Natural leather mouse pad on white desk next to porcelain mug and keyboard.',
     description: 'The rest of the house will still be a mess, but your desk will look great.',
   },
   {
-    name: 'Focus Collection',
+    name: 'Colección de primavera',
     href: '#',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-collection-03.jpg',
     imageAlt: 'Person placing task list card into walnut card holder next to felt carrying case on leather desk pad.',
@@ -262,7 +262,7 @@ export default function Home() {
 
                         {/* Search */}
                         <Link to="#" className="ml-2 p-2 text-white">
-                          <span className="sr-only">Search</span>
+                          <span className="sr-only">Buscar</span>
                           <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
                         </Link>
                       </div>
@@ -275,17 +275,17 @@ export default function Home() {
 
                       <div className="flex flex-1 items-center justify-end">
                         <Link to="#" className="hidden text-sm font-medium text-white lg:block">
-                          Search
+                          Buscar
                         </Link>
 
                         <div className="flex items-center lg:ml-8">
                           {/* Help */}
                           <Link to="#" className="p-2 text-white lg:hidden">
-                            <span className="sr-only">Help</span>
+                            <span className="sr-only">Ayuda</span>
                             <QuestionMarkCircleIcon className="h-6 w-6" aria-hidden="true" />
                           </Link>
                           <Link to="#" className="hidden text-sm font-medium text-white lg:block">
-                            Help
+                            Ayuda
                           </Link>
 
                           <CartWidget />
@@ -318,10 +318,10 @@ export default function Home() {
           <section aria-labelledby="category-heading" className="pt-24 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8">
             <div className="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
               <h2 id="category-heading" className="text-2xl font-bold tracking-tight text-gray-900">
-                Shop by Category
+                Comprar por categor&iacute;a
               </h2>
               <Link to="#" className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
-                Browse all categories
+              Navegar por todas las categorías
                 <span aria-hidden="true"> &rarr;</span>
               </Link>
             </div>
@@ -400,7 +400,7 @@ export default function Home() {
             className="mx-auto max-w-xl px-4 pt-24 sm:px-6 sm:pt-32 lg:max-w-7xl lg:px-8"
           >
             <h2 id="collection-heading" className="text-2xl font-bold tracking-tight text-gray-900">
-              Shop by Collection
+              Comprar por colecci&oacute;n
             </h2>
             <p className="mt-4 text-base text-gray-500">
               Each season, we collaborate with world-class designers to create a collection inspired by the natural world.

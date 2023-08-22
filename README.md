@@ -31,20 +31,20 @@ Sigue estos pasos para ejecutar localmente el proyecto en tu máquina:
 1. Clona este repositorio en tu máquina local:
 
    ```bash
-   git clone https://github.com/tuusuario/tu-repositorio.git
+   git clone https://github.com/RodReBer/Emme-Ve-Ecommerce.git
 
 2. Navega al directorio del proyecto:
 
-    cd tu-repositorio
+    cd Emme-Ve-Ecommerce
 
 3. Instala las dependencias utilizando npm o Yarn:
-
+   ```bash
     npm install
     O
     yarn install
 
 4. Ejecuta la aplicación en un entorno de desarrollo:
-
+   ```bash
     npm run dev
     O
     yarn dev

@@ -6,5 +6,6 @@ import Products from "./Products/Products"
 import ProductoId from "./ProductoId/ProductoId"
 import Product from "./Product/Product"
 import AddToCart from "./AddToCart/AddToCart"
+import ItemCount from "./ItemCount/ItemCount"
 
-export { Footer, CartWidget, NavBar, Filters, Products, ProductoId, Product, AddToCart };
+export { Footer, CartWidget, NavBar, Filters, Products, ProductoId, Product, AddToCart, ItemCount };

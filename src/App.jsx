@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import { Productos, Home, NoPage } from "./routes/constants-pages";
+import { Productos, Home, NoPage , Carrito} from "./routes/constants-pages";
 import { ProductoId } from "./components/index";
 import CartContextProvider from "./contexts/CartContextProvider";
 const App = () => {
@@ -21,6 +21,9 @@ const App = () => {
             />
 
             <Route path="/productos/:id" element={<ProductoId />} />
+
+            <Route path="/carrito" element={<Carrito />} />
+
           </Routes>
         </BrowserRouter>
       </div>

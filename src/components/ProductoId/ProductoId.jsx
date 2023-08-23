@@ -7,7 +7,7 @@ import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { products } from '../constantsProducts'
 import { useParams } from 'react-router-dom'
 import { NavBar, Footer } from "../index"
-import { AddToCart } from '../index'
+import { ItemCount } from '../index'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -146,7 +146,7 @@ const ProductoId = () => {
 
                 <div className="mt-10 flex">
 
-                  <AddToCart  id={id}/>
+                  <ItemCount  id={id}/>
 
                   <button
                     type="button"

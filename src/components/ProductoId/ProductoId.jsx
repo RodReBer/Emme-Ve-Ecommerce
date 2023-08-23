@@ -146,7 +146,7 @@ const ProductoId = () => {
 
                 <div className="mt-10 flex">
 
-                  <AddToCart />
+                  <AddToCart  id={id}/>
 
                   <button
                     type="button"

@@ -16,6 +16,8 @@ const Products = () => {
   const idCategory = useParams().categoria;
   const productos = getProductsByCategory(products, idCategory);
 
+  console.log(idCategory)
+  console.log(productos)
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl overflow-hidden px-4 py-16 sm:px-6 sm:py-24 lg:px-8">

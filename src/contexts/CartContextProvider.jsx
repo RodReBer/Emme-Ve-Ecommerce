@@ -6,6 +6,8 @@ export const listCartContext = React.createContext();
 
 const CartContextProvider = ({ children }) => {
   const [listCart, setListCart] = useState([]);
+  console.log(listCart)
+
 
   const addProduct = (id) => {
     const productoAdd = products.find((product) => product.id == id);
@@ -29,6 +31,7 @@ const CartContextProvider = ({ children }) => {
         setListCart([...productToMaintain, { ...productoAdd, quantity: 1 }]);
     }
     console.log(listCart)
+
 
   };
   const clearCart = () => {

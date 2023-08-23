@@ -49,7 +49,7 @@ function classNames(...classes) {
 
 const Filter =()=> {
   const [open, setOpen] = useState(false)
-  const cat = useParams().categoria;
+  const cat = useParams().categoria || "Todos los productos";
 
   return (
     <div className="bg-white">

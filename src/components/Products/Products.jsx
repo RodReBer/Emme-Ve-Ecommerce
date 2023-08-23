@@ -5,19 +5,27 @@ import { useParams } from "react-router-dom";
 import { products } from "../constantsProducts";
 
 function getProductsByCategory(products, idCategory) {
-  const productos = products.filter((product) => product.categoria === idCategory);
-  if(productos == undefined){
+  const productos = products.filter(
+    (product) => product.categoria === idCategory
+  );
+  if (productos == undefined) {
     productos = products;
   }
   return productos;
 }
 
 const Products = () => {
-  const idCategory = useParams().categoria;
-  const productos = getProductsByCategory(products, idCategory);
+  const Category = useParams().categoria;
 
-  console.log(idCategory)
-  console.log(productos)
+  let productos;
+
+  if (Category !== undefined) {
+    productos = getProductsByCategory(products, Category);
+  } else {
+    // Si Category es undefined, obtén todos los productos
+    productos = products;
+  }
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl overflow-hidden px-4 py-16 sm:px-6 sm:py-24 lg:px-8">

@@ -156,10 +156,10 @@ export default function Home() {
           <div aria-hidden="true" className="absolute inset-0 bg-gray-900 opacity-50" />
 
           {/* Navigation */}
-          <header className="relative z-10">
+          <header className="fixed z-10 left-0 top-0 right-0">
             <nav aria-label="Top">
               {/* Secondary navigation */}
-              <div className="bg-white bg-opacity-10 backdrop-blur-md backdrop-filter">
+              <div className="bg-gray-900 bg-opacity-50 backdrop-blur-md backdrop-filter">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                   <div>
                     <div className="flex h-16 items-center justify-between">

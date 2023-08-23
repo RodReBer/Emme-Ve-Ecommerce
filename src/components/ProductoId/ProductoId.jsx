@@ -7,6 +7,7 @@ import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { products } from '../constantsProducts'
 import { useParams } from 'react-router-dom'
 import { NavBar, Footer } from "../index"
+import { AddToCart } from '../index'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -73,7 +74,7 @@ const ProductoId = () => {
               <h1 className="text-3xl font-bold tracking-tight text-gray-900">{product.name}</h1>
 
               <div className="mt-3">
-                <h2 className="sr-only">Product information</h2>
+                <h2 className="sr-only">Informaci&oacute;n del producto</h2>
                 <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
               </div>
 
@@ -86,7 +87,7 @@ const ProductoId = () => {
                       <StarIcon
                         key={rating}
                         className={classNames(
-                          product.rating > rating ? 'text-indigo-500' : 'text-gray-300',
+                          product.rating > rating ? 'text-yellow-300' : 'text-gray-300',
                           'h-5 w-5 flex-shrink-0'
                         )}
                         aria-hidden="true"
@@ -98,7 +99,7 @@ const ProductoId = () => {
               </div>
 
               <div className="mt-6">
-                <h3 className="sr-only">Description</h3>
+                <h3 className="sr-only">Descripci&oacute;n</h3>
 
                 <div
                   className="space-y-6 text-base text-gray-700"
@@ -112,7 +113,7 @@ const ProductoId = () => {
                   <h3 className="text-sm text-gray-600">Color</h3>
 
                   <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-2">
-                    <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
+                    <RadioGroup.Label className="sr-only">Elige un </RadioGroup.Label>
                     <span className="flex items-center space-x-3">
                       {product.colors.map((color) => (
                         <RadioGroup.Option
@@ -144,26 +145,22 @@ const ProductoId = () => {
                 </div>
 
                 <div className="mt-10 flex">
-                  <button
-                    type="submit"
-                    className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-gray-600 px-8 py-3 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
-                  >
-                    Add to bag
-                  </button>
+
+                  <AddToCart />
 
                   <button
                     type="button"
                     className="ml-4 flex items-center justify-center rounded-md px-3 py-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
                   >
                     <HeartIcon className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
-                    <span className="sr-only">Add to favorites</span>
+                    <span className="sr-only">Añadir a favoritos</span>
                   </button>
                 </div>
               </form>
 
               <section aria-labelledby="details-heading" className="mt-12">
                 <h2 id="details-heading" className="sr-only">
-                  Additional details
+                  Detalles adicionales
                 </h2>
 
                 <div className="divide-y divide-gray-200 border-t">

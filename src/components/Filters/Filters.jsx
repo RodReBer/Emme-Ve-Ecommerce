@@ -40,6 +40,7 @@ const filters = [
 ]
 // const activeFilters = [{ value: 'todos-los-productos', label: 'Todos Los Productos' }]
 const activeFilters = []
+import { useParams } from 'react-router-dom'
 
 
 function classNames(...classes) {
@@ -48,6 +49,7 @@ function classNames(...classes) {
 
 const Filter =()=> {
   const [open, setOpen] = useState(false)
+  const cat = useParams().categoria;
 
   return (
     <div className="bg-white">
@@ -140,7 +142,7 @@ const Filter =()=> {
       </Transition.Root>
 
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col items-center">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Productos</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 capitalize">{cat}</h1>
       </div>
 
       {/* Filters */}

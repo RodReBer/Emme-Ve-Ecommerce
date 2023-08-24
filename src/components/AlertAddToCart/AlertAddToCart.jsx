@@ -2,7 +2,6 @@ import { Fragment, useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/20/solid";
-import { Link } from "react-router-dom";
 
 const AlertAddToCart = () => {
   const [show, setShow] = useState(true);

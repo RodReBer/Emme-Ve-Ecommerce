@@ -9,20 +9,20 @@ const products = [
     availability: 'White and Black',
     inStock: true,
     leadTime: '3–4 weeks',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-01.jpg',
+    imageSrc: 'https://images.pexels.com/photos/17904741/pexels-photo-17904741/free-photo-of-mar-gafas-de-sol-vacaciones-mujer.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     imageAlt: 'White fabric pouch with white zipper, black zipper pull, and black elastic loop.',
     rating: 4,
     images: [
       {
         id: 1,
         name: 'Angled view',
-        src: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-01.jpg',
+        src: 'https://images.pexels.com/photos/17904741/pexels-photo-17904741/free-photo-of-mar-gafas-de-sol-vacaciones-mujer.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         alt: 'Angled front view with bag zipped and handles upright.',
       },
       {
         id: 2,
         name: 'Angled view',
-        src: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-01.jpg',
+        src: 'https://images.pexels.com/photos/17904741/pexels-photo-17904741/free-photo-of-mar-gafas-de-sol-vacaciones-mujer.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         alt: 'Angled front view with bag zipped and handles upright.',
       },
       // Más imágenes...
@@ -61,14 +61,14 @@ const products = [
     inStock: true,
     leadTime: '3–4 weeks',
     availability: 'Various colors',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-02.jpg',
+    imageSrc: 'https://images.pexels.com/photos/1027160/pexels-photo-1027160.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     imageAlt: 'Gray fabric backpack with front zipper pocket and black carry handle.',
     rating: 3,
     images: [
       {
         id: 1,
         name: 'Front view',
-        src: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-02.jpg',
+        src: 'https://images.pexels.com/photos/1027160/pexels-photo-1027160.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         alt: 'Gray fabric backpack with front zipper pocket and black carry handle.',
       },
       // Más imágenes...
@@ -105,14 +105,14 @@ const products = [
     inStock: false,
     leadTime: '3–4 weeks',
     availability: 'Brown and Black',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-03.jpg',
+    imageSrc: 'https://images.pexels.com/photos/8995809/pexels-photo-8995809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     imageAlt: 'Brown leather tote bag with front zipper pocket and handles.',
     rating: 4,
     images: [
       {
         id: 1,
         name: 'Front view',
-        src: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-03.jpg',
+        src: 'https://images.pexels.com/photos/8995809/pexels-photo-8995809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         alt: 'Brown leather tote bag with front zipper pocket and handles.',
       },
       // Más imágenes...
@@ -149,14 +149,14 @@ const products = [
     inStock: true,
     leadTime: '3–4 weeks',
     availability: 'Blue and Gray',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-04.jpg',
+    imageSrc: 'https://images.pexels.com/photos/17919040/pexels-photo-17919040/free-photo-of-moda-mujer-verano-exterior.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     imageAlt: 'Blue fabric travel duffel with front zipper pocket and adjustable shoulder strap.',
     rating: 4,
     images: [
       {
         id: 1,
         name: 'Front view',
-        src: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-04.jpg',
+        src: 'https://images.pexels.com/photos/17919040/pexels-photo-17919040/free-photo-of-moda-mujer-verano-exterior.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         alt: 'Blue fabric travel duffel with front zipper pocket and adjustable shoulder strap.',
       },
       // Más imágenes...
@@ -193,14 +193,14 @@ const products = [
     inStock: false,
     leadTime: '3–4 weeks',
     availability: 'Various colors',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-05.jpg',
+    imageSrc: 'https://images.pexels.com/photos/17881968/pexels-photo-17881968/free-photo-of-mujer-modelo-mullido-fotografia-de-moda.jpeg',
     imageAlt: 'Gray fabric tote bag with front zipper pocket and black handles.',
     rating: 5,
     images: [
       {
         id: 1,
         name: 'Front view',
-        src: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-05.jpg',
+        src: 'https://images.pexels.com/photos/17881968/pexels-photo-17881968/free-photo-of-mujer-modelo-mullido-fotografia-de-moda.jpeg',
         alt: 'Gray fabric tote bag with front zipper pocket and black handles.',
       },
       // Más imágenes...
@@ -232,20 +232,26 @@ const products = [
   {
     id: 6,
     name: 'Weekend Backpack',
-    categoria: 'tops',
+    categoria: 'pantalones',
     stock: 10,
     price: 95,
     inStock: true,
     leadTime: '3–4 weeks',
     availability: 'Black and Gray',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-06.jpg',
+    imageSrc: 'https://images.pexels.com/photos/1082528/pexels-photo-1082528.jpeg',
     imageAlt: 'Black fabric backpack with front zipper pocket and adjustable shoulder straps.',
     rating: 4,
     images: [
       {
         id: 1,
         name: 'Front view',
-        src: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-06.jpg',
+        src: 'https://images.pexels.com/photos/1082528/pexels-photo-1082528.jpeg',
+        alt: 'Black fabric backpack with front zipper pocket and adjustable shoulder straps.',
+      },      
+      {
+        id: 2,
+        name: 'Front view',
+        src: 'https://images.pexels.com/photos/1082529/pexels-photo-1082529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         alt: 'Black fabric backpack with front zipper pocket and adjustable shoulder straps.',
       },
       // Más imágenes...

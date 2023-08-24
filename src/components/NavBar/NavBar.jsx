@@ -117,10 +117,10 @@ const NavBar = () => {
       </Transition.Root>
       {/* Navigation */}
       <div className=' relative bg-gray-900'>
-        <header className="relative z-10">
+        <header className="fixed z-10 top-0 right-0 left-0">
           <nav aria-label="Top">
             {/* Secondary navigation */}
-            <div className="bg-white bg-opacity-10 backdrop-blur-md backdrop-filter">
+            <div className="bg-gray-900 bg-opacity-50 backdrop-blur-md backdrop-filter">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div>
                   <div className="flex h-16 items-center justify-between">

@@ -7,32 +7,18 @@ export const listCartContext = React.createContext();
 const CartContextProvider = ({ children }) => {
   const [listCart, setListCart] = useState([]);
 
-
-  const addProduct = (id) => {
-    const productoAdd = products.find((product) => product.id == id);
-
-
-    const productToMaintain = listCart.filter((product) => product.id !== id);
-    let add = true;
-
-    for (let product of listCart) {
-      if (product.id == id) {
-        let quantity = product.quantity;
-
-        if (quantity < productoAdd.stock) {
-          const newQuantity = { ...product, quantity: quantity + 1 };
-          setListCart([...productToMaintain, newQuantity]);
-        }
-        add = false;
-        break;
-      }
-      add &&
-        setListCart([...productToMaintain, { ...productoAdd, quantity: 1 }]);
-    }
-
-
+  const isInCart = (id) => {
+    return listCart.some((producto) => producto.id === id);
   };
-  
+
+  const addProduct = (product, cantidad) => {
+    if (!isInCart(product.id)) {
+      setListCart((prev) => [...prev, { ...product, cantidad }]);
+    } else {
+      console.error("este producto ya ha sido agregado");
+    }
+  };
+
   const clearCart = () => {
     setListCart([]);
   };

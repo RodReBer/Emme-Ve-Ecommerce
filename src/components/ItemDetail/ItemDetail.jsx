@@ -22,14 +22,10 @@ const ItemDetail = () => {
   let { addProduct } = useContext(listCartContext);
 
   const handleOnAdd = (cantidad) => {
-    const item = {
-      id,
-      titulo,
-      precio,
-      cantidad,
-    };
-    addProduct(item, cantidad);
-  };
+       
+    console.log("click");
+    addProduct(product, cantidad);
+};
 
   return (
     <>

@@ -63,7 +63,7 @@ const products = [
     availability: 'Various colors',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-02.jpg',
     imageAlt: 'Gray fabric backpack with front zipper pocket and black carry handle.',
-    rating: 5,
+    rating: 3,
     images: [
       {
         id: 1,

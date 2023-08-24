@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { products } from "../constantsProducts";
 
-const ItemCount = ({ stock, inicial, onAdd }) => {
+const ItemCount = ({ stock, inicial, onAdd, id }) => {
   const [cantidad, setCantidad] = useState(inicial);
 
   const producto = products.find((product) => product.id == id);

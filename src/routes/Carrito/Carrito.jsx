@@ -3,14 +3,32 @@ import {
   ClockIcon,
   QuestionMarkCircleIcon,
   XMarkIcon,
+  CheckCircleIcon,
 } from "@heroicons/react/20/solid";
 
 import { listCartContext } from "../../contexts/CartContextProvider";
 import { NavBar, Footer } from "../../components";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { RadioGroup } from "@headlessui/react";
+const deliveryMethods = [
+  {
+    id: 1,
+    title: "Retirar",
+    turnaround: "4–10 business days",
+    price: 0,
+  },
+  { id: 2, title: "Envio", turnaround: "2–3 dias hábiles", price: 100 },
+];
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 export default function Carrito() {
+  const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
+    deliveryMethods[0]
+  );
   let { getListCart, updateProductQuantity, remove, calculateTotal } =
     useContext(listCartContext);
   let products = getListCart();
@@ -24,7 +42,7 @@ export default function Carrito() {
     remove(productId);
   };
   let subTotal = calculateTotal();
-  let shipping = 5;
+  let shipping = selectedDeliveryMethod.price;
   let total = subTotal + shipping;
   return (
     <>
@@ -71,10 +89,10 @@ export default function Carrito() {
                             </h3>
                           </div>
                           <div className="mt-1 flex text-sm">
-                            <p className="text-gray-500">{product.color}</p>
-                            {product.size ? (
+                            <p className="text-gray-500">{product.colorSeleccionado}</p>
+                            {product.sizes ? (
                               <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">
-                                {product.size}
+                                {product.talleSeleccionado}
                               </p>
                             ) : null}
                           </div>
@@ -93,7 +111,7 @@ export default function Carrito() {
                           <select
                             id={`quantity-${productIdx}`}
                             name={`quantity-${productIdx}`}
-                            className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                            className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500 sm:text-sm"
                             value={product.cantidad}
                             onChange={(event) =>
                               handleQuantityChange(productIdx, event)
@@ -158,7 +176,7 @@ export default function Carrito() {
                 id="summary-heading"
                 className="text-lg font-medium text-gray-900"
               >
-                Order summary
+                Resumen del pedido
               </h2>
 
               <dl className="mt-6 space-y-4">
@@ -170,7 +188,7 @@ export default function Carrito() {
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <dt className="flex items-center text-sm text-gray-600">
-                    <span>Shipping estimate</span>
+                    <span>Env&iacute;o</span>
                     <a
                       href="#"
                       className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
@@ -189,9 +207,7 @@ export default function Carrito() {
                   </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                  <dt className="text-base font-medium text-gray-900">
-                    Order total
-                  </dt>
+                  <dt className="text-base font-medium text-gray-900">Total</dt>
                   <dd className="text-base font-medium text-gray-900">
                     ${total}
                   </dd>
@@ -203,8 +219,77 @@ export default function Carrito() {
                   type="submit"
                   className="w-full rounded-md border border-transparent bg-gray-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50"
                 >
-                  Checkout
+                  Finalizar compra
                 </button>
+              </div>
+              <div className="mt-10 border-t border-gray-200 pt-10">
+                <RadioGroup
+                  value={selectedDeliveryMethod}
+                  onChange={setSelectedDeliveryMethod}
+                >
+                  <RadioGroup.Label className="text-lg font-medium text-gray-900">
+                    M&eacute;todo de env&iacute;o
+                  </RadioGroup.Label>
+
+                  <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
+                    {deliveryMethods.map((deliveryMethod) => (
+                      <RadioGroup.Option
+                        key={deliveryMethod.id}
+                        value={deliveryMethod}
+                        className={({ checked, active }) =>
+                          classNames(
+                            checked ? "border-transparent" : "border-gray-300",
+                            active ? "ring-2 ring-gray-500" : "",
+                            "relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none"
+                          )
+                        }
+                      >
+                        {({ checked, active }) => (
+                          <>
+                            <span className="flex flex-1">
+                              <span className="flex flex-col">
+                                <RadioGroup.Label
+                                  as="span"
+                                  className="block text-sm font-medium text-gray-900"
+                                >
+                                  {deliveryMethod.title}
+                                </RadioGroup.Label>
+                                <RadioGroup.Description
+                                  as="span"
+                                  className="mt-1 flex items-center text-sm text-gray-500"
+                                >
+                                  {deliveryMethod.turnaround}
+                                </RadioGroup.Description>
+                                <RadioGroup.Description
+                                  as="span"
+                                  className="mt-6 text-sm font-medium text-gray-900"
+                                >
+                                  ${deliveryMethod.price}
+                                </RadioGroup.Description>
+                              </span>
+                            </span>
+                            {checked ? (
+                              <CheckCircleIcon
+                                className="h-5 w-5 text-gray-600"
+                                aria-hidden="true"
+                              />
+                            ) : null}
+                            <span
+                              className={classNames(
+                                active ? "border" : "border-2",
+                                checked
+                                  ? "border-gray-500"
+                                  : "border-transparent",
+                                "pointer-events-none absolute -inset-px rounded-lg"
+                              )}
+                              aria-hidden="true"
+                            />
+                          </>
+                        )}
+                      </RadioGroup.Option>
+                    ))}
+                  </div>
+                </RadioGroup>
               </div>
             </section>
           </form>

@@ -4,7 +4,7 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 import { products } from "../constantsProducts";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { NavBar, Footer, ItemCount } from "../index";
 import { listCartContext } from "../../contexts/CartContextProvider";
 
@@ -18,11 +18,12 @@ const ItemDetail = () => {
   const stock = product.stock;
 
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
   let { addProduct } = useContext(listCartContext);
 
   const handleOnAdd = (cantidad) => {
-    addProduct(product, cantidad);
+    addProduct(product, cantidad, selectedColor.name, selectedSize.name);
   };
 
   return (
@@ -162,6 +163,56 @@ const ItemDetail = () => {
                         </RadioGroup.Option>
                       ))}
                     </span>
+                  </RadioGroup>
+                </div>
+
+                {/* Sizes */}
+                <div className="mt-8">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-sm font-medium text-gray-900">Size</h2>
+                    <Link
+                      to="#"
+                      className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                    >
+                      See sizing chart
+                    </Link>
+                  </div>
+
+                  <RadioGroup
+                    value={selectedSize}
+                    onChange={setSelectedSize}
+                    className="mt-2"
+                  >
+                    <RadioGroup.Label className="sr-only">
+                      Choose a size
+                    </RadioGroup.Label>
+                    <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
+                      {product.sizes.map((size) => (
+                        <RadioGroup.Option
+                          key={size.name}
+                          value={size}
+                          className={({ active, checked }) =>
+                            classNames(
+                              size.inStock
+                                ? "cursor-pointer focus:outline-none"
+                                : "cursor-not-allowed opacity-25",
+                              active
+                                ? "ring-2 ring-gray-500 ring-offset-2"
+                                : "",
+                              checked
+                                ? "border-transparent bg-gray-800 text-white hover:bg-gray-900"
+                                : "border-gray-200 bg-white text-gray-900 hover:bg-gray-50",
+                              "flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1"
+                            )
+                          }
+                          disabled={!size.inStock}
+                        >
+                          <RadioGroup.Label as="span">
+                            {size.name}
+                          </RadioGroup.Label>
+                        </RadioGroup.Option>
+                      ))}
+                    </div>
                   </RadioGroup>
                 </div>
 

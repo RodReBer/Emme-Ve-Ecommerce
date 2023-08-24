@@ -30,44 +30,41 @@ const CartContextProvider = ({ children }) => {
     return total;
   };
 
-  const addProduct = (product, cantidad) => {
+  const addProduct = (product, cantidad, selectedColor, selectedSize) => {
     const existingProductIndex = listCart.findIndex(
-      (item) => item.id === product.id
+      (item) => item.id === product.id && item.colorSeleccionado === selectedColor && item.talleSeleccionado === selectedSize
     );
-
-    if (!isInCart(product.id)) {
+  
+    if (existingProductIndex === -1) {
       const newQuantity = Math.min(cantidad, product.stock);
-      setListCart([...listCart, { ...product, cantidad: newQuantity }]);
+      const productWithColorAndSize = {
+        ...product,
+        cantidad: newQuantity,
+        colorSeleccionado: selectedColor,
+        talleSeleccionado: selectedSize,
+      };
+      setListCart([...listCart, productWithColorAndSize]);
+  
       handleShowNotification();
       setTimeout(() => {
         setNotificationVisible(false);
       }, 3000);
-    } else if (existingProductIndex !== -1) {
+    } else {
       const currentQuantity = listCart[existingProductIndex].cantidad;
       const newQuantity = currentQuantity + cantidad;
       const maxQuantity = Math.min(newQuantity, product.stock);
-
-      if (newQuantity > product.stock) {
-        console.error(
-          `No puedes agregar más de ${currentQuantity + cantidad} ${
-            product.name
-          } al carrito, el stock máximo es ${product.stock}`
-        );
-        return;
-      }
-
+  
       const updatedCart = [...listCart];
       updatedCart[existingProductIndex].cantidad = maxQuantity;
       setListCart(updatedCart);
-
-      if (maxQuantity < product.stock) {
-        handleShowNotification();
-        setTimeout(() => {
-          setNotificationVisible(false);
-        }, 3000);
-      }
+  
+      handleShowNotification();
+      setTimeout(() => {
+        setNotificationVisible(false);
+      }, 3000);
     }
   };
+  
 
   const getListCart = () => {
     return listCart;

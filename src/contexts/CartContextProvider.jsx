@@ -1,11 +1,16 @@
 import React from "react";
-import { products } from "../components/constantsProducts";
 import { useState } from "react";
 
 export const listCartContext = React.createContext();
 
 const CartContextProvider = ({ children }) => {
   const [listCart, setListCart] = useState([]);
+
+  const updateProductQuantity = (productIdx, newQuantity) => {
+    const updatedProducts = [...listCart];
+    updatedProducts[productIdx].cantidad = newQuantity;
+    setListCart(updatedProducts); // Actualiza el estado de los productos
+  };
 
   const isInCart = (id) => {
     return listCart.some((producto) => producto.id === id);
@@ -18,6 +23,9 @@ const CartContextProvider = ({ children }) => {
       console.error("este producto ya ha sido agregado");
     }
   };
+  const getListCart=()=>{
+    return listCart;
+  }
 
   const clearCart = () => {
     setListCart([]);
@@ -36,6 +44,8 @@ const CartContextProvider = ({ children }) => {
         setListCart,
         addProduct,
         clearCart,
+        getListCart,
+        updateProductQuantity,
       }}
     >
       {children}

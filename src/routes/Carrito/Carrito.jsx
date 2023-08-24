@@ -5,10 +5,23 @@ import {
   XMarkIcon,
 } from "@heroicons/react/20/solid";
 
-import { products } from "../../components/constantsProducts";
+import { listCartContext } from "../../contexts/CartContextProvider";
 import { NavBar, Footer } from "../../components";
+import { useContext } from "react";
 
 export default function Carrito() {
+  let { getListCart, updateProductQuantity, remove } = useContext(listCartContext);
+  let products = getListCart();
+
+  const handleQuantityChange = (productIdx, event) => {
+    const newQuantity = parseInt(event.target.value, 10);
+    updateProductQuantity(productIdx, newQuantity); // Actualizar en el contexto
+  };
+
+  const handleRemoveClick = (productId) => {
+    remove(productId);
+  };
+
   return (
     <>
       <NavBar />
@@ -74,21 +87,25 @@ export default function Carrito() {
                             id={`quantity-${productIdx}`}
                             name={`quantity-${productIdx}`}
                             className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                            value={product.cantidad}
+                            onChange={(event) =>
+                              handleQuantityChange(productIdx, event)
+                            }
                           >
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
-                            <option value={5}>5</option>
-                            <option value={6}>6</option>
-                            <option value={7}>7</option>
-                            <option value={8}>8</option>
+                            {[...Array(product.stock).keys()].map(
+                              (quantity) => (
+                                <option key={quantity + 1} value={quantity + 1}>
+                                  {quantity + 1}
+                                </option>
+                              )
+                            )}
                           </select>
 
                           <div className="absolute right-0 top-0">
                             <button
                               type="button"
                               className="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
+                              onClick={() => handleRemoveClick(product.id)}
                             >
                               <span className="sr-only">Remove</span>
                               <XMarkIcon

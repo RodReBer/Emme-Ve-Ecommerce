@@ -58,7 +58,7 @@ const products = [
     categoria: 'pantalones',
     stock: 10,
     price: '$80',
-    inStock: false,
+    inStock: true,
     leadTime: '3–4 weeks',
     availability: 'Various colors',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-07-product-02.jpg',

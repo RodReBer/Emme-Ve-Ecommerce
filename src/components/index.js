@@ -7,5 +7,6 @@ import ItemDetail from "./ItemDetail/ItemDetail"
 import Product from "./Product/Product"
 import ItemCount from "./ItemCount/ItemCount"
 import AlertAddToCart from "./AlertAddToCart/AlertAddToCart"
+import ScrollToTop from "./ScrollToTop/ScrollToTop"
 
-export { Footer, CartWidget, NavBar, Filters, Products, ItemDetail, Product, ItemCount, AlertAddToCart };
+export { Footer, CartWidget, NavBar, Filters, Products, ItemDetail, Product, ItemCount, AlertAddToCart, ScrollToTop };

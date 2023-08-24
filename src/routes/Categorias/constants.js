@@ -1,27 +1,27 @@
 const categories = [
   {
     name: 'Tops',
-    href: '#',
+    to: '/productos/categoria/tops',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-01.jpg',
   },
   {
     name: 'Vestidos',
-    href: '#',
+    to: '/productos/categoria/vestidos',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-02.jpg',
   },
   {
     name: 'Pantalones',
-    href: '#',
+    to: '/productos/categoria/pantalones',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-04.jpg',
   },
   {
     name: 'Shorts',
-    href: '#',
+    to: '/productos/categoria/shorts',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-05.jpg',
   },
   {
     name: 'Sale',
-    href: '#',
+    to: '/productos/categoria/sale',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-03.jpg'
   },
 ]

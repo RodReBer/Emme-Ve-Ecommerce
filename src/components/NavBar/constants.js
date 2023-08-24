@@ -26,7 +26,7 @@ const navigation = {
           to: '/productos/categoria/pantalones',
           imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-04.jpg',
           imageAlt: 'Model opening tan leather long wallet with credit card pockets and cash pouch.',
-        },        
+        },
       ],
     },
   ],

@@ -24,16 +24,16 @@ export default function Carrito() {
   };
   let subTotal = calculateTotal();
   let shipping = 5;
-  let total = subTotal + shipping ;
+  let total = subTotal + shipping;
   return (
     <>
       <NavBar />
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8 flex flex-col gap-12 mt-12">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Carrito de compras
           </h1>
-          <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
+          <form className="lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
             <section aria-labelledby="cart-heading" className="lg:col-span-7">
               <h2 id="cart-heading" className="sr-only">
                 Items in your shopping cart
@@ -180,7 +180,9 @@ export default function Carrito() {
                       />
                     </a>
                   </dt>
-                  <dd className="text-sm font-medium text-gray-900">${shipping}</dd>
+                  <dd className="text-sm font-medium text-gray-900">
+                    ${shipping}
+                  </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <dt className="text-base font-medium text-gray-900">

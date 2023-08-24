@@ -1,13 +1,13 @@
-import { NavBar, Filters, Products, Footer} from "../../components";
+import { NavBar, Filters, Products, Footer } from "../../components";
 
 const Categories = () => {
-    return (
-        <>
-            <NavBar />
-            <Filters />
-            <Products />
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <NavBar />
+      <Filters />
+      <Products />
+      <Footer />
+    </>
+  );
 };
-export default Categories
+export default Categories;

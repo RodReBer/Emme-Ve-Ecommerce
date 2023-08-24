@@ -1,54 +1,63 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Menu, Popover, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import { Link } from 'react-router-dom'
+import { Fragment, useState } from "react";
+import {
+  Dialog,
+  Disclosure,
+  Menu,
+  Popover,
+  Transition,
+} from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { Link } from "react-router-dom";
 
 const sortOptions = [
-  { name: 'Más relevantes', href: '#', current: false },
-  { name: 'Menor precio', href: '#', current: false },
-  { name: 'Mayor precio', href: '#', current: false },
-]
+  { name: "Más relevantes", href: "#", current: false },
+  { name: "Menor precio", href: "#", current: false },
+  { name: "Mayor precio", href: "#", current: false },
+];
 const filters = [
   {
-    id: 'categoria',
-    name: 'Categoría',
+    id: "categoria",
+    name: "Categoría",
     options: [
-      { value: 'todos-los-productos', label: 'Todos Los Productos', checked: false },
-      { value: 'tees', label: 'Tees', checked: false },
-      { value: 'objects', label: 'Objects', checked: false },
+      {
+        value: "todos-los-productos",
+        label: "Todos Los Productos",
+        checked: false,
+      },
+      { value: "tees", label: "Tees", checked: false },
+      { value: "objects", label: "Objects", checked: false },
     ],
   },
   {
-    id: 'color',
-    name: 'Color',
+    id: "color",
+    name: "Color",
     options: [
-      { value: 'blanco', label: 'Blanco', checked: false },
-      { value: 'negro', label: 'Negro', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
+      { value: "blanco", label: "Blanco", checked: false },
+      { value: "negro", label: "Negro", checked: false },
+      { value: "beige", label: "Beige", checked: false },
     ],
   },
   {
-    id: 'tamanios',
-    name: 'Tamaños',
+    id: "tamanios",
+    name: "Tamaños",
     options: [
-      { value: 's', label: 'S', checked: false },
-      { value: 'm', label: 'M', checked: false },
-      { value: 'l', label: 'L', checked: false },
+      { value: "s", label: "S", checked: false },
+      { value: "m", label: "M", checked: false },
+      { value: "l", label: "L", checked: false },
     ],
   },
-]
+];
 // const activeFilters = [{ value: 'todos-los-productos', label: 'Todos Los Productos' }]
-const activeFilters = []
-import { useParams } from 'react-router-dom'
-
+const activeFilters = [];
+import { useParams } from "react-router-dom";
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
-const Filter =()=> {
-  const [open, setOpen] = useState(false)
+const Filter = () => {
+  const [open, setOpen] = useState(false);
   const cat = useParams().categoria || "Todos los productos";
 
   return (
@@ -94,15 +103,24 @@ const Filter =()=> {
                 {/* Filters */}
                 <form className="mt-4">
                   {filters.map((section) => (
-                    <Disclosure as="div" key={section.name} className="border-t border-gray-200 px-4 py-6">
+                    <Disclosure
+                      as="div"
+                      key={section.name}
+                      className="border-t border-gray-200 px-4 py-6"
+                    >
                       {({ open }) => (
                         <>
                           <h3 className="-mx-2 -my-3 flow-root">
                             <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400">
-                              <span className="font-medium text-gray-900">{section.name}</span>
+                              <span className="font-medium text-gray-900">
+                                {section.name}
+                              </span>
                               <span className="ml-6 flex items-center">
                                 <ChevronDownIcon
-                                  className={classNames(open ? '-rotate-180' : 'rotate-0', 'h-5 w-5 transform')}
+                                  className={classNames(
+                                    open ? "-rotate-180" : "rotate-0",
+                                    "h-5 w-5 transform"
+                                  )}
                                   aria-hidden="true"
                                 />
                               </span>
@@ -111,7 +129,10 @@ const Filter =()=> {
                           <Disclosure.Panel className="pt-6">
                             <div className="space-y-6">
                               {section.options.map((option, optionIdx) => (
-                                <div key={option.value} className="flex items-center">
+                                <div
+                                  key={option.value}
+                                  className="flex items-center"
+                                >
                                   <input
                                     id={`filter-mobile-${section.id}-${optionIdx}`}
                                     name={`${section.id}[]`}
@@ -141,8 +162,10 @@ const Filter =()=> {
         </Dialog>
       </Transition.Root>
 
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col items-center">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 capitalize">{cat}</h1>
+      <div className="mx-auto max-w-7xl px-4 pb-16 pt-32 sm:px-6 lg:px-8 flex flex-col items-center">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 capitalize">
+          {cat}
+        </h1>
       </div>
 
       {/* Filters */}
@@ -181,9 +204,11 @@ const Filter =()=> {
                           <Link
                             to={option.href}
                             className={classNames(
-                              option.current ? 'font-medium text-gray-900' : 'text-gray-500',
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm'
+                              option.current
+                                ? "font-medium text-gray-900"
+                                : "text-gray-500",
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm"
                             )}
                           >
                             {option.name}
@@ -208,7 +233,10 @@ const Filter =()=> {
               <div className="flow-root">
                 <Popover.Group className="-mx-4 flex items-center divide-x divide-gray-200">
                   {filters.map((section, sectionIdx) => (
-                    <Popover key={section.name} className="relative inline-block px-4 text-left">
+                    <Popover
+                      key={section.name}
+                      className="relative inline-block px-4 text-left"
+                    >
                       <Popover.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
                         <span>{section.name}</span>
                         {/* {sectionIdx === 0 ? (
@@ -234,7 +262,10 @@ const Filter =()=> {
                         <Popover.Panel className="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
                           <form className="space-y-4">
                             {section.options.map((option, optionIdx) => (
-                              <div key={option.value} className="flex items-center">
+                              <div
+                                key={option.value}
+                                className="flex items-center"
+                              >
                                 <input
                                   id={`filter-${section.id}-${optionIdx}`}
                                   name={`${section.id}[]`}
@@ -270,7 +301,10 @@ const Filter =()=> {
               <span className="sr-only">, active</span>
             </h3>
 
-            <div aria-hidden="true" className="hidden h-5 w-px bg-gray-300 sm:ml-4 sm:block" />
+            <div
+              aria-hidden="true"
+              className="hidden h-5 w-px bg-gray-300 sm:ml-4 sm:block"
+            />
 
             <div className="mt-2 sm:ml-4 sm:mt-0">
               <div className="-m-1 flex flex-wrap items-center">
@@ -284,9 +318,20 @@ const Filter =()=> {
                       type="button"
                       className="ml-1 inline-flex h-4 w-4 flex-shrink-0 rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-500"
                     >
-                      <span className="sr-only">Remove filter for {activeFilter.label}</span>
-                      <svg className="h-2 w-2" stroke="currentColor" fill="none" viewBox="0 0 8 8">
-                        <path strokeLinecap="round" strokeWidth="1.5" d="M1 1l6 6m0-6L1 7" />
+                      <span className="sr-only">
+                        Remove filter for {activeFilter.label}
+                      </span>
+                      <svg
+                        className="h-2 w-2"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 8 8"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeWidth="1.5"
+                          d="M1 1l6 6m0-6L1 7"
+                        />
                       </svg>
                     </button>
                   </span>
@@ -297,6 +342,6 @@ const Filter =()=> {
         </div>
       </section>
     </div>
-  )
-}
-export default Filter
+  );
+};
+export default Filter;

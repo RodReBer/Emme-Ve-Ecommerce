@@ -1,29 +1,32 @@
-
-import { Fragment, useState } from 'react'
-import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
+import { Fragment, useState } from "react";
+import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
   QuestionMarkCircleIcon,
   XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { CartWidget } from '../../components/index'
+} from "@heroicons/react/24/outline";
+import { CartWidget } from "../../components/index";
 
-import { navigation } from '../../components/NavBar/constants'
+import { navigation } from "../../components/NavBar/constants";
 
-import { Link } from 'react-router-dom'
-import logoBlanco from "../../assets/logoBlanco.avif"
+import { Link } from "react-router-dom";
+import logoBlanco from "../../assets/logoBlanco.avif";
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 const NavBar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <>
       <Transition.Root show={mobileMenuOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileMenuOpen}>
+        <Dialog
+          as="div"
+          className="relative z-40 lg:hidden"
+          onClose={setMobileMenuOpen}
+        >
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
@@ -67,8 +70,10 @@ const NavBar = () => {
                           key={category.name}
                           className={({ selected }) =>
                             classNames(
-                              selected ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-900',
-                              'flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium'
+                              selected
+                                ? "border-indigo-600 text-indigo-600"
+                                : "border-transparent text-gray-900",
+                              "flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium"
                             )
                           }
                         >
@@ -79,18 +84,34 @@ const NavBar = () => {
                   </div>
                   <Tab.Panels as={Fragment}>
                     {navigation.categories.map((category) => (
-                      <Tab.Panel key={category.name} className="space-y-12 px-4 py-6">
+                      <Tab.Panel
+                        key={category.name}
+                        className="space-y-12 px-4 py-6"
+                      >
                         <div className="grid grid-cols-2 gap-x-4 gap-y-10">
                           {category.featured.map((item) => (
                             <div key={item.name} className="group relative">
                               <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
-                                <img src={item.imageSrc} alt={item.imageAlt} className="object-cover object-center" />
+                                <img
+                                  src={item.imageSrc}
+                                  alt={item.imageAlt}
+                                  className="object-cover object-center"
+                                />
                               </div>
-                              <Link to={item.to} className="mt-6 block text-sm font-medium text-gray-900">
-                                <span className="absolute inset-0 z-10" aria-hidden="true" />
+                              <Link
+                                to={item.to}
+                                className="mt-6 block text-sm font-medium text-gray-900"
+                              >
+                                <span
+                                  className="absolute inset-0 z-10"
+                                  aria-hidden="true"
+                                />
                                 {item.name}
                               </Link>
-                              <p aria-hidden="true" className="mt-1 text-sm text-gray-500">
+                              <p
+                                aria-hidden="true"
+                                className="mt-1 text-sm text-gray-500"
+                              >
                                 Comprar ahora
                               </p>
                             </div>
@@ -104,7 +125,10 @@ const NavBar = () => {
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <Link to={page.to} className="-m-2 block p-2 font-medium text-gray-900">
+                      <Link
+                        to={page.to}
+                        className="-m-2 block p-2 font-medium text-gray-900"
+                      >
                         {page.name}
                       </Link>
                     </div>
@@ -116,7 +140,7 @@ const NavBar = () => {
         </Dialog>
       </Transition.Root>
       {/* Navigation */}
-      <div className=' relative bg-gray-900'>
+      <div className=" relative bg-gray-900">
         <header className="fixed z-10 top-0 right-0 left-0">
           <nav aria-label="Top">
             {/* Secondary navigation */}
@@ -128,11 +152,7 @@ const NavBar = () => {
                     <div className="hidden lg:flex lg:flex-1 lg:items-center">
                       <Link to="/">
                         <span className="sr-only">Your Company</span>
-                        <img
-                          className="h-8 w-auto"
-                          src={logoBlanco}
-                          alt=""
-                        />
+                        <img className="h-8 w-auto" src={logoBlanco} alt="" />
                       </Link>
                     </div>
 
@@ -149,8 +169,8 @@ const NavBar = () => {
                                       {category.name}
                                       <span
                                         className={classNames(
-                                          open ? 'bg-white' : '',
-                                          'absolute inset-x-0 -bottom-px h-0.5 transition duration-200 ease-out'
+                                          open ? "bg-white" : "",
+                                          "absolute inset-x-0 -bottom-px h-0.5 transition duration-200 ease-out"
                                         )}
                                         aria-hidden="true"
                                       />
@@ -168,13 +188,19 @@ const NavBar = () => {
                                   >
                                     <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500">
                                       {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                                      <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
+                                      <div
+                                        className="absolute inset-0 top-1/2 bg-white shadow"
+                                        aria-hidden="true"
+                                      />
 
                                       <div className="relative bg-white">
                                         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                                           <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
                                             {category.featured.map((item) => (
-                                              <div key={item.name} className="group relative">
+                                              <div
+                                                key={item.name}
+                                                className="group relative"
+                                              >
                                                 <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
                                                   <img
                                                     src={item.imageSrc}
@@ -182,11 +208,20 @@ const NavBar = () => {
                                                     className="object-cover object-center"
                                                   />
                                                 </div>
-                                                <Link to={item.to} className="mt-4 block font-medium text-gray-900">
-                                                  <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                                <Link
+                                                  to={item.to}
+                                                  className="mt-4 block font-medium text-gray-900"
+                                                >
+                                                  <span
+                                                    className="absolute inset-0 z-10"
+                                                    aria-hidden="true"
+                                                  />
                                                   {item.name}
                                                 </Link>
-                                                <p aria-hidden="true" className="mt-1">
+                                                <p
+                                                  aria-hidden="true"
+                                                  className="mt-1"
+                                                >
                                                   Comprar ahora
                                                 </p>
                                               </div>
@@ -216,7 +251,11 @@ const NavBar = () => {
 
                     {/* Mobile menu and search (lg-) */}
                     <div className="flex flex-1 items-center lg:hidden">
-                      <button type="button" className="-ml-2 p-2 text-white" onClick={() => setMobileMenuOpen(true)}>
+                      <button
+                        type="button"
+                        className="-ml-2 p-2 text-white"
+                        onClick={() => setMobileMenuOpen(true)}
+                      >
                         <span className="sr-only">Open menu</span>
                         <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                       </button>
@@ -224,7 +263,10 @@ const NavBar = () => {
                       {/* Search */}
                       <Link to="#" className="ml-2 p-2 text-white">
                         <span className="sr-only">Search</span>
-                        <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
+                        <MagnifyingGlassIcon
+                          className="h-6 w-6"
+                          aria-hidden="true"
+                        />
                       </Link>
                     </div>
 
@@ -235,7 +277,10 @@ const NavBar = () => {
                     </Link>
 
                     <div className="flex flex-1 items-center justify-end">
-                      <Link to="#" className="hidden text-sm font-medium text-white lg:block">
+                      <Link
+                        to="#"
+                        className="hidden text-sm font-medium text-white lg:block"
+                      >
                         Search
                       </Link>
 
@@ -243,9 +288,15 @@ const NavBar = () => {
                         {/* Help */}
                         <Link to="#" className="p-2 text-white lg:hidden">
                           <span className="sr-only">Help</span>
-                          <QuestionMarkCircleIcon className="h-6 w-6" aria-hidden="true" />
+                          <QuestionMarkCircleIcon
+                            className="h-6 w-6"
+                            aria-hidden="true"
+                          />
                         </Link>
-                        <Link to="#" className="hidden text-sm font-medium text-white lg:block">
+                        <Link
+                          to="#"
+                          className="hidden text-sm font-medium text-white lg:block"
+                        >
                           Help
                         </Link>
 
@@ -262,4 +313,4 @@ const NavBar = () => {
     </>
   );
 };
-export default NavBar
+export default NavBar;

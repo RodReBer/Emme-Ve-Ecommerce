@@ -18,7 +18,7 @@ const ItemDetail = () => {
   const stock = product.stock;
 
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const [selectedSize, setSelectedSize] = useState(product.colors.sizes[2]);
 
   let { addProduct } = useContext(listCartContext);
 
@@ -187,7 +187,7 @@ const ItemDetail = () => {
                       Choose a size
                     </RadioGroup.Label>
                     <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                      {product.sizes.map((size) => (
+                      {product.colors.sizes.map((size) => (
                         <RadioGroup.Option
                           key={size.name}
                           value={size}

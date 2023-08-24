@@ -8,14 +8,6 @@ const products = [
     price: 650,
     availability: 'White and Black',
     inStock: true,
-    sizes: [
-      { name: 'XXS', inStock: true },
-      { name: 'XS', inStock: true },
-      { name: 'S', inStock: true },
-      { name: 'M', inStock: true },
-      { name: 'L', inStock: true },
-      { name: 'XL', inStock: false },
-    ],
     leadTime: '3–4 weeks',
     imageSrc: 'https://images.pexels.com/photos/17904741/pexels-photo-17904741/free-photo-of-mar-gafas-de-sol-vacaciones-mujer.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     imageAlt: 'White fabric pouch with white zipper, black zipper pull, and black elastic loop.',
@@ -36,9 +28,39 @@ const products = [
       // Más imágenes...
     ],
     colors: [
-      { name: 'Washed Black', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700' },
-      { name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-200' },
-      { name: 'Washed Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500' },
+      {
+        name: 'Washed Black', 
+        bgColor: 'bg-gray-700', 
+        selectedColor: 'ring-gray-700', 
+        sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
+      {
+        name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-200', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
+      {
+        name: 'Washed Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
     ],
     description: `
         <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack...</p>
@@ -67,14 +89,6 @@ const products = [
     stock: 10,
     price: 1250,
     inStock: true,
-    sizes: [
-      { name: 'XXS', inStock: true },
-      { name: 'XS', inStock: true },
-      { name: 'S', inStock: true },
-      { name: 'M', inStock: true },
-      { name: 'L', inStock: true },
-      { name: 'XL', inStock: false },
-    ],
     leadTime: '3–4 weeks',
     availability: 'Various colors',
     imageSrc: 'https://images.pexels.com/photos/1027160/pexels-photo-1027160.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -90,8 +104,26 @@ const products = [
       // Más imágenes...
     ],
     colors: [
-      { name: 'Gray', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700' },
-      { name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black' },
+      {
+        name: 'Gray', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
+      {
+        name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
     ],
     description: `
         <p>The Classic Backpack Característitcas a spacious main compartment, multiple pockets, and a durable design...</p>
@@ -119,14 +151,6 @@ const products = [
     stock: 0,
     price: 1150,
     inStock: false,
-    sizes: [
-      { name: 'XXS', inStock: true },
-      { name: 'XS', inStock: true },
-      { name: 'S', inStock: true },
-      { name: 'M', inStock: true },
-      { name: 'L', inStock: true },
-      { name: 'XL', inStock: false },
-    ],
     leadTime: '3–4 weeks',
     availability: 'Brown and Black',
     imageSrc: 'https://images.pexels.com/photos/8995809/pexels-photo-8995809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -142,8 +166,26 @@ const products = [
       // Más imágenes...
     ],
     colors: [
-      { name: 'Brown', bgColor: 'bg-brown', selectedColor: 'ring-brown' },
-      { name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black' },
+      {
+        name: 'Brown', bgColor: 'bg-brown', selectedColor: 'ring-brown', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
+      {
+        name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
     ],
     description: `
         <p>The Leather Tote Bag Característitcas genuine leather construction, multiple pockets, and a timeless design...</p>
@@ -171,14 +213,6 @@ const products = [
     stock: 5,
     price: 700,
     inStock: true,
-    sizes: [
-      { name: 'XXS', inStock: true },
-      { name: 'XS', inStock: true },
-      { name: 'S', inStock: true },
-      { name: 'M', inStock: true },
-      { name: 'L', inStock: true },
-      { name: 'XL', inStock: false },
-    ],
     leadTime: '3–4 weeks',
     availability: 'Blue and Gray',
     imageSrc: 'https://images.pexels.com/photos/17919040/pexels-photo-17919040/free-photo-of-moda-mujer-verano-exterior.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -194,8 +228,26 @@ const products = [
       // Más imágenes...
     ],
     colors: [
-      { name: 'Blue', bgColor: 'bg-blue-500', selectedColor: 'ring-blue-500' },
-      { name: 'Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500' },
+      {
+        name: 'Blue', bgColor: 'bg-blue-500', selectedColor: 'ring-blue-500', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
+      {
+        name: 'Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
     ],
     description: `
         <p>The Travel Duffel is designed for adventure with its durable fabric, multiple pockets, and versatile strap...</p>
@@ -223,14 +275,6 @@ const products = [
     stock: 0,
     price: 650,
     inStock: false,
-    sizes: [
-      { name: 'XXS', inStock: true },
-      { name: 'XS', inStock: true },
-      { name: 'S', inStock: true },
-      { name: 'M', inStock: true },
-      { name: 'L', inStock: true },
-      { name: 'XL', inStock: false },
-    ],
     leadTime: '3–4 weeks',
     availability: 'Various colors',
     imageSrc: 'https://images.pexels.com/photos/17881968/pexels-photo-17881968/free-photo-of-mujer-modelo-mullido-fotografia-de-moda.jpeg',
@@ -246,9 +290,36 @@ const products = [
       // Más imágenes...
     ],
     colors: [
-      { name: 'Gray', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700' },
-      { name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black' },
-      { name: 'Green', bgColor: 'bg-green-500', selectedColor: 'ring-green-500' },
+      {
+        name: 'Gray', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
+      {
+        name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
+      {
+        name: 'Green', bgColor: 'bg-green-500', selectedColor: 'ring-green-500', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
     ],
     description: `
         <p>The Everyday Tote is a versatile and stylish choice with its spacious design and convenient pockets...</p>
@@ -276,14 +347,6 @@ const products = [
     stock: 10,
     price: 950,
     inStock: true,
-    sizes: [
-      { name: 'XXS', inStock: true },
-      { name: 'XS', inStock: true },
-      { name: 'S', inStock: true },
-      { name: 'M', inStock: true },
-      { name: 'L', inStock: true },
-      { name: 'XL', inStock: false },
-    ],
     leadTime: '3–4 weeks',
     availability: 'Black and Gray',
     imageSrc: 'https://images.pexels.com/photos/1082528/pexels-photo-1082528.jpeg',
@@ -305,8 +368,26 @@ const products = [
       // Más imágenes...
     ],
     colors: [
-      { name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black' },
-      { name: 'Gray', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700' },
+      {
+        name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
+      {
+        name: 'Gray', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700', sizes: [
+          { name: 'XXS', inStock: true },
+          { name: 'XS', inStock: true },
+          { name: 'S', inStock: true },
+          { name: 'M', inStock: true },
+          { name: 'L', inStock: true },
+          { name: 'XL', inStock: false },
+        ],
+      },
     ],
     description: `
         <p>The Weekend Backpack is perfect for short getaways with its compact design and comfortable straps...</p>

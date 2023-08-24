@@ -31,7 +31,7 @@ const navigation = {
     },
   ],
   pages: [
-    { name: 'Company', to: '#' },
+    { name: 'Envios', to: '/envios' },
     { name: 'Stores', to: '#' },
   ],
 }

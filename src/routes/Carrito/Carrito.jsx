@@ -8,6 +8,7 @@ import {
 import { listCartContext } from "../../contexts/CartContextProvider";
 import { NavBar, Footer } from "../../components";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 export default function Carrito() {
   let { getListCart, updateProductQuantity, remove, calculateTotal } =
@@ -45,25 +46,28 @@ export default function Carrito() {
               >
                 {products.map((product, productIdx) => (
                   <li key={product.id} className="flex py-6 sm:py-10">
-                    <div className="flex-shrink-0">
-                      <img
-                        src={product.imageSrc}
-                        alt={product.imageAlt}
-                        className="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
-                      />
-                    </div>
+                    <Link to={`/productos/${product.id}`}>
+                      {" "}
+                      <div className="flex-shrink-0">
+                        <img
+                          src={product.imageSrc}
+                          alt={product.imageAlt}
+                          className="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
+                        />
+                      </div>
+                    </Link>
 
                     <div className="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
                       <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                         <div>
                           <div className="flex justify-between">
                             <h3 className="text-sm">
-                              <a
-                                href={product.href}
+                              <Link
+                                to={`/productos/${product.id}`}
                                 className="font-medium text-gray-700 hover:text-gray-800"
                               >
                                 {product.name}
-                              </a>
+                              </Link>
                             </h3>
                           </div>
                           <div className="mt-1 flex text-sm">
@@ -197,7 +201,7 @@ export default function Carrito() {
               <div className="mt-6">
                 <button
                   type="submit"
-                  className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                  className="w-full rounded-md border border-transparent bg-gray-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50"
                 >
                   Checkout
                 </button>

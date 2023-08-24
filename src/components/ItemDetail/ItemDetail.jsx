@@ -22,9 +22,8 @@ const ItemDetail = () => {
   let { addProduct } = useContext(listCartContext);
 
   const handleOnAdd = (cantidad) => {
-    console.log("click");
     addProduct(product, cantidad);
-};
+  };
 
   return (
     <>
@@ -88,7 +87,7 @@ const ItemDetail = () => {
               <div className="mt-3">
                 <h2 className="sr-only">Informaci&oacute;n del producto</h2>
                 <p className="text-3xl tracking-tight text-gray-900">
-                  {product.price}
+                  ${product.price}
                 </p>
               </div>
 

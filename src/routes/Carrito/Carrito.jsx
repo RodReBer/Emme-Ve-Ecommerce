@@ -10,7 +10,8 @@ import { NavBar, Footer } from "../../components";
 import { useContext } from "react";
 
 export default function Carrito() {
-  let { getListCart, updateProductQuantity, remove } = useContext(listCartContext);
+  let { getListCart, updateProductQuantity, remove, calculateTotal } =
+    useContext(listCartContext);
   let products = getListCart();
 
   const handleQuantityChange = (productIdx, event) => {
@@ -21,7 +22,9 @@ export default function Carrito() {
   const handleRemoveClick = (productId) => {
     remove(productId);
   };
-
+  let subTotal = calculateTotal();
+  let shipping = 5;
+  let total = subTotal + shipping ;
   return (
     <>
       <NavBar />
@@ -72,7 +75,7 @@ export default function Carrito() {
                             ) : null}
                           </div>
                           <p className="mt-1 text-sm font-medium text-gray-900">
-                            {product.price}
+                            ${product.price}
                           </p>
                         </div>
 
@@ -157,7 +160,9 @@ export default function Carrito() {
               <dl className="mt-6 space-y-4">
                 <div className="flex items-center justify-between">
                   <dt className="text-sm text-gray-600">Subtotal</dt>
-                  <dd className="text-sm font-medium text-gray-900">$99.00</dd>
+                  <dd className="text-sm font-medium text-gray-900">
+                    ${subTotal}
+                  </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <dt className="flex items-center text-sm text-gray-600">
@@ -175,32 +180,14 @@ export default function Carrito() {
                       />
                     </a>
                   </dt>
-                  <dd className="text-sm font-medium text-gray-900">$5.00</dd>
-                </div>
-                <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                  <dt className="flex text-sm text-gray-600">
-                    <span>Tax estimate</span>
-                    <a
-                      href="#"
-                      className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
-                    >
-                      <span className="sr-only">
-                        Learn more about how tax is calculated
-                      </span>
-                      <QuestionMarkCircleIcon
-                        className="h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    </a>
-                  </dt>
-                  <dd className="text-sm font-medium text-gray-900">$8.32</dd>
+                  <dd className="text-sm font-medium text-gray-900">${shipping}</dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <dt className="text-base font-medium text-gray-900">
                     Order total
                   </dt>
                   <dd className="text-base font-medium text-gray-900">
-                    $112.32
+                    ${total}
                   </dd>
                 </div>
               </dl>

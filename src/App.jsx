@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import { Productos, Home, NoPage , Carrito} from "./routes/constants-pages";
-import { ProductoId } from "./components/index";
+import { ItemDetail } from "./components/index";
 import CartContextProvider from "./contexts/CartContextProvider";
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
               element={<Productos />}
             />
 
-            <Route path="/productos/:id" element={<ProductoId />} />
+            <Route path="/productos/:id" element={<ItemDetail />} />
 
             <Route path="/carrito" element={<Carrito />} />
 

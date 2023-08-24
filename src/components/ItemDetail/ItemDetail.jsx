@@ -1,24 +1,35 @@
+import { useState, useContext } from "react";
+import { Disclosure, RadioGroup, Tab } from "@headlessui/react";
+import { StarIcon } from "@heroicons/react/20/solid";
+import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
-import { useState } from 'react'
-import { Disclosure, RadioGroup, Tab } from '@headlessui/react'
-import { StarIcon } from '@heroicons/react/20/solid'
-import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
-
-import { products } from '../constantsProducts'
-import { useParams } from 'react-router-dom'
-import { NavBar, Footer } from "../index"
-import { ItemCount } from '../index'
+import { products } from "../constantsProducts";
+import { useParams } from "react-router-dom";
+import { NavBar, Footer, ItemCount } from "../index";
+import { listCartContext } from "../../contexts/CartContextProvider";
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-
+  return classes.filter(Boolean).join(" ");
 }
 
-const ProductoId = () => {
+const ItemDetail = () => {
   const id = parseInt(useParams().id);
-  const product = products.find(producto => producto.id === id);
+  const product = products.find((producto) => producto.id === id);
+  const stock = product.stock;
 
-  const [selectedColor, setSelectedColor] = useState(product.colors[0])
+  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+
+  let { addProduct } = useContext(listCartContext);
+
+  const handleOnAdd = (cantidad) => {
+    const item = {
+      id,
+      titulo,
+      precio,
+      cantidad,
+    };
+    addProduct(item, cantidad);
+  };
 
   return (
     <>
@@ -40,12 +51,16 @@ const ProductoId = () => {
                         <>
                           <span className="sr-only">{image.name}</span>
                           <span className="absolute inset-0 overflow-hidden rounded-md">
-                            <img src={image.src} alt="" className="h-full w-full object-cover object-center" />
+                            <img
+                              src={image.src}
+                              alt=""
+                              className="h-full w-full object-cover object-center"
+                            />
                           </span>
                           <span
                             className={classNames(
-                              selected ? 'ring-indigo-500' : 'ring-transparent',
-                              'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'
+                              selected ? "ring-indigo-500" : "ring-transparent",
+                              "pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2"
                             )}
                             aria-hidden="true"
                           />
@@ -71,11 +86,15 @@ const ProductoId = () => {
 
             {/* Product info */}
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900">{product.name}</h1>
+              <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+                {product.name}
+              </h1>
 
               <div className="mt-3">
                 <h2 className="sr-only">Informaci&oacute;n del producto</h2>
-                <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+                <p className="text-3xl tracking-tight text-gray-900">
+                  {product.price}
+                </p>
               </div>
 
               {/* Reviews */}
@@ -87,8 +106,10 @@ const ProductoId = () => {
                       <StarIcon
                         key={rating}
                         className={classNames(
-                          product.rating > rating ? 'text-yellow-300' : 'text-gray-300',
-                          'h-5 w-5 flex-shrink-0'
+                          product.rating > rating
+                            ? "text-yellow-300"
+                            : "text-gray-300",
+                          "h-5 w-5 flex-shrink-0"
                         )}
                         aria-hidden="true"
                       />
@@ -112,8 +133,14 @@ const ProductoId = () => {
                 <div>
                   <h3 className="text-sm text-gray-600">Color</h3>
 
-                  <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-2">
-                    <RadioGroup.Label className="sr-only">Elige un </RadioGroup.Label>
+                  <RadioGroup
+                    value={selectedColor}
+                    onChange={setSelectedColor}
+                    className="mt-2"
+                  >
+                    <RadioGroup.Label className="sr-only">
+                      Elige un{" "}
+                    </RadioGroup.Label>
                     <span className="flex items-center space-x-3">
                       {product.colors.map((color) => (
                         <RadioGroup.Option
@@ -122,9 +149,9 @@ const ProductoId = () => {
                           className={({ active, checked }) =>
                             classNames(
                               color.selectedColor,
-                              active && checked ? 'ring ring-offset-1' : '',
-                              !active && checked ? 'ring-2' : '',
-                              'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
+                              active && checked ? "ring ring-offset-1" : "",
+                              !active && checked ? "ring-2" : "",
+                              "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
                             )
                           }
                         >
@@ -135,7 +162,7 @@ const ProductoId = () => {
                             aria-hidden="true"
                             className={classNames(
                               color.bgColor,
-                              'h-8 w-8 rounded-full border border-black border-opacity-10'
+                              "h-8 w-8 rounded-full border border-black border-opacity-10"
                             )}
                           />
                         </RadioGroup.Option>
@@ -145,14 +172,21 @@ const ProductoId = () => {
                 </div>
 
                 <div className="mt-10 flex">
-
-                  <ItemCount  id={id}/>
+                  <ItemCount
+                    id={id}
+                    inicial={1}
+                    stock={stock}
+                    onAdd={handleOnAdd}
+                  ></ItemCount>
 
                   <button
                     type="button"
                     className="ml-4 flex items-center justify-center rounded-md px-3 py-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
                   >
-                    <HeartIcon className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
+                    <HeartIcon
+                      className="h-6 w-6 flex-shrink-0"
+                      aria-hidden="true"
+                    />
                     <span className="sr-only">Añadir a favoritos</span>
                   </button>
                 </div>
@@ -171,7 +205,10 @@ const ProductoId = () => {
                           <h3>
                             <Disclosure.Button className="group relative flex w-full items-center justify-between py-6 text-left">
                               <span
-                                className={classNames(open ? 'text-indigo-600' : 'text-gray-900', 'text-sm font-medium')}
+                                className={classNames(
+                                  open ? "text-indigo-600" : "text-gray-900",
+                                  "text-sm font-medium"
+                                )}
                               >
                                 {detail.name}
                               </span>
@@ -190,7 +227,10 @@ const ProductoId = () => {
                               </span>
                             </Disclosure.Button>
                           </h3>
-                          <Disclosure.Panel as="div" className="prose prose-sm pb-6">
+                          <Disclosure.Panel
+                            as="div"
+                            className="prose prose-sm pb-6"
+                          >
                             <ul role="list">
                               {detail.items.map((item) => (
                                 <li key={item}>{item}</li>
@@ -209,7 +249,6 @@ const ProductoId = () => {
       </div>
       <Footer />
     </>
-
   );
 };
-export default ProductoId;
+export default ItemDetail;

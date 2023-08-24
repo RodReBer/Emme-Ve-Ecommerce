@@ -144,7 +144,7 @@ const products = [
     id: 4,
     name: 'Travel Duffel',
     categoria: 'tops',
-    stock: 10,
+    stock: 5,
     price: '$90',
     inStock: false,
     leadTime: '3–4 weeks',
@@ -272,7 +272,6 @@ const products = [
       // Más secciones...
     ],
   },
-
 ];
 
 

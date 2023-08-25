@@ -10,7 +10,7 @@ const ItemCount = ({ stock, inicial, onAdd, id }) => {
 
   function updateTextCarrito(inStock) {
     if (!inStock) {
-      textCarrito = "Sin Stock";
+      textCarrito = "No disponible";
     }
   }
 

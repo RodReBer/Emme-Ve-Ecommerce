@@ -33,32 +33,29 @@ const products = [
         bgColor: 'bg-gray-700', 
         selectedColor: 'ring-gray-700', 
         sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: false },
           { name: 'L', inStock: false },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
       {
         name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-200', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
       {
         name: 'Washed Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
     ],
@@ -106,22 +103,20 @@ const products = [
     colors: [
       {
         name: 'Gray', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
       {
         name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
     ],
@@ -168,22 +163,20 @@ const products = [
     colors: [
       {
         name: 'Brown', bgColor: 'bg-brown', selectedColor: 'ring-brown', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
       {
         name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
     ],
@@ -230,22 +223,20 @@ const products = [
     colors: [
       {
         name: 'Blue', bgColor: 'bg-blue-500', selectedColor: 'ring-blue-500', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
       {
         name: 'Gray', bgColor: 'bg-gray-500', selectedColor: 'ring-gray-500', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
     ],
@@ -292,32 +283,29 @@ const products = [
     colors: [
       {
         name: 'Gray', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
       {
         name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
       {
         name: 'Green', bgColor: 'bg-green-500', selectedColor: 'ring-green-500', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
     ],
@@ -370,22 +358,20 @@ const products = [
     colors: [
       {
         name: 'Black', bgColor: 'bg-black', selectedColor: 'ring-black', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
       {
         name: 'Gray', bgColor: 'bg-gray-700', selectedColor: 'ring-gray-700', sizes: [
-          { name: 'XXS', inStock: true },
-          { name: 'XS', inStock: true },
           { name: 'S', inStock: true },
           { name: 'M', inStock: true },
           { name: 'L', inStock: true },
           { name: 'XL', inStock: false },
+          { name: 'XXL', inStock: false },
         ],
       },
     ],

@@ -1,6 +1,6 @@
 const categories = [
   {
-    name: 'Tops',
+    name: 'Tops / Bodies',
     to: '/productos/categoria/tops',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-01.jpg',
   },
@@ -15,7 +15,7 @@ const categories = [
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-04.jpg',
   },
   {
-    name: 'Shorts',
+    name: 'Shorts / Polleras',
     to: '/productos/categoria/shorts',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-05.jpg',
   },

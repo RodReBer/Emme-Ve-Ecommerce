@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { products } from "../constantsProducts";
 
 function getProductsByCategory(products, idCategory) {
-  const productos = products.filter(
+  let productos = products.filter(
     (product) => product.categoria === idCategory
   );
   if (productos == undefined) {

@@ -18,7 +18,7 @@ const ItemDetail = () => {
   const stock = product.stock;
 
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.colors.sizes[2]);
+  const [selectedSize, setSelectedSize] = useState(product.colors[0].sizes[2]);
 
   let { addProduct } = useContext(listCartContext);
 
@@ -187,31 +187,34 @@ const ItemDetail = () => {
                       Choose a size
                     </RadioGroup.Label>
                     <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                      {product.colors.sizes.map((size) => (
-                        <RadioGroup.Option
-                          key={size.name}
-                          value={size}
-                          className={({ active, checked }) =>
-                            classNames(
-                              size.inStock
-                                ? "cursor-pointer focus:outline-none"
-                                : "cursor-not-allowed opacity-25",
-                              active
-                                ? "ring-2 ring-gray-500 ring-offset-2"
-                                : "",
-                              checked
-                                ? "border-transparent bg-gray-800 text-white hover:bg-gray-900"
-                                : "border-gray-200 bg-white text-gray-900 hover:bg-gray-50",
-                              "flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1"
-                            )
-                          }
-                          disabled={!size.inStock}
-                        >
-                          <RadioGroup.Label as="span">
-                            {size.name}
-                          </RadioGroup.Label>
-                        </RadioGroup.Option>
-                      ))}
+                    {product.colors.map((color) => (
+  color.sizes.map((size) => (
+    <RadioGroup.Option
+      key={`${color.name}-${size.name}`}
+      value={size}
+      className={({ active, checked }) =>
+        classNames(
+          size.inStock
+            ? "cursor-pointer focus:outline-none"
+            : "cursor-not-allowed opacity-25",
+          active
+            ? "ring-2 ring-gray-500 ring-offset-2"
+            : "",
+          checked
+            ? "border-transparent bg-gray-800 text-white hover:bg-gray-900"
+            : "border-gray-200 bg-white text-gray-900 hover:bg-gray-50",
+          "flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1"
+        )
+      }
+      disabled={!size.inStock}
+    >
+      <RadioGroup.Label as="span">
+        {size.name}
+      </RadioGroup.Label>
+    </RadioGroup.Option>
+  ))
+))}
+
                     </div>
                   </RadioGroup>
                 </div>

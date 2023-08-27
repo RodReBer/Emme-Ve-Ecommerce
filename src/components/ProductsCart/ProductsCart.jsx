@@ -13,7 +13,6 @@ const ProductsCart = ({ products }) => {
   const handleRemoveClick = (productId, productSize, productColor) => {
     remove(productId, productSize, productColor);
   };
-
   return (
     <>
       <ul

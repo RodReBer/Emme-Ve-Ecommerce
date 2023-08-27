@@ -7,6 +7,7 @@ import { products } from "../constantsProducts";
 import { useParams, Link } from "react-router-dom";
 import { NavBar, Footer, ItemCount } from "../index";
 import { listCartContext } from "../../contexts/CartContextProvider";
+import { useEffect } from "react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -19,6 +20,14 @@ const ItemDetail = () => {
 
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.colors[0]);
+  
+  useEffect(() => {
+    if (product.colors.length > 0) {
+      setSelectedColor(product.colors[0]);
+      setSelectedSize(product.colors[0].sizes[0]);
+    }
+  }, [product.colors]);
+
 
   let { addProduct } = useContext(listCartContext);
 

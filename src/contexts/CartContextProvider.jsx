@@ -32,9 +32,12 @@ const CartContextProvider = ({ children }) => {
 
   const addProduct = (product, cantidad, selectedColor, selectedSize) => {
     const existingProductIndex = listCart.findIndex(
-      (item) => item.id === product.id && item.colorSeleccionado === selectedColor && item.talleSeleccionado === selectedSize
+      (item) =>
+        item.id === product.id &&
+        item.colorSeleccionado === selectedColor &&
+        item.talleSeleccionado === selectedSize
     );
-  
+
     if (existingProductIndex === -1) {
       const newQuantity = Math.min(cantidad, product.stock);
       const productWithColorAndSize = {
@@ -44,7 +47,7 @@ const CartContextProvider = ({ children }) => {
         talleSeleccionado: selectedSize,
       };
       setListCart([...listCart, productWithColorAndSize]);
-  
+
       handleShowNotification();
       setTimeout(() => {
         setNotificationVisible(false);
@@ -53,18 +56,17 @@ const CartContextProvider = ({ children }) => {
       const currentQuantity = listCart[existingProductIndex].cantidad;
       const newQuantity = currentQuantity + cantidad;
       const maxQuantity = Math.min(newQuantity, product.stock);
-  
+
       const updatedCart = [...listCart];
       updatedCart[existingProductIndex].cantidad = maxQuantity;
       setListCart(updatedCart);
-  
+
       handleShowNotification();
       setTimeout(() => {
         setNotificationVisible(false);
       }, 3000);
     }
   };
-  
 
   const getListCart = () => {
     return listCart;
@@ -74,10 +76,16 @@ const CartContextProvider = ({ children }) => {
     setListCart([]);
   };
 
-  const remove = (id) => {
-    const updateList = listCart.filter((product) => product.id !== id);
+  const remove = (id, size, color) => {
+    const updateList = listCart.filter(
+      (product) =>
+        product.id !== id ||
+        product.colorSeleccionado !== color ||
+        product.talleSeleccionado !== size
+    );
     setListCart(updateList);
   };
+  
 
   return (
     <listCartContext.Provider

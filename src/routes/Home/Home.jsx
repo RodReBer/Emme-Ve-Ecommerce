@@ -362,7 +362,7 @@ export default function Home() {
             </nav>
           </header>
           <ScrollParallax scrollContainerRef>
-            <div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-[272px] lg:px-0">
+            <div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 pt-72 text-center sm:pt-96 lg:px-0">
               <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">
                 New arrivals are here
               </h1>

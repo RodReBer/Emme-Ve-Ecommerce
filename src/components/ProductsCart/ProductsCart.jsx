@@ -5,19 +5,20 @@ import {
 } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
+import { listCartContext } from "../../contexts/CartContextProvider";
 const ProductsCart = ({ products }) => {
 
     let { updateProductQuantity, remove } =
-    useContext(listCartContext);
+        useContext(listCartContext);
 
     const handleQuantityChange = (productIdx, event) => {
         const newQuantity = parseInt(event.target.value, 10);
         updateProductQuantity(productIdx, newQuantity); // Actualizar en el contexto
-      };
-    
-      const handleRemoveClick = (productId) => {
+    };
+
+    const handleRemoveClick = (productId) => {
         remove(productId);
-      };
+    };
 
     return (
         <>
@@ -26,9 +27,8 @@ const ProductsCart = ({ products }) => {
                 className="divide-y divide-gray-200 border-b border-t border-gray-200"
             >
                 {products.map((product, productIdx) => (
-                    <li key={product.id} className="flex py-6 sm:py-10">
+                    <li key={product.id+product.colorSeleccionado+product.talleSeleccionado} className="flex py-6 sm:py-10">
                         <Link to={`/productos/${product.id}`}>
-                            {" "}
                             <div className="flex-shrink-0">
                                 <img
                                     src={product.imageSrc}
@@ -53,11 +53,9 @@ const ProductsCart = ({ products }) => {
                                     </div>
                                     <div className="mt-1 flex text-sm">
                                         <p className="text-gray-500">{product.colorSeleccionado}</p>
-                                        {product.colors.sizes ? (
                                             <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">
                                                 {product.talleSeleccionado}
                                             </p>
-                                        ) : null}
                                     </div>
                                     <p className="mt-1 text-sm font-medium text-gray-900">
                                         ${product.price}

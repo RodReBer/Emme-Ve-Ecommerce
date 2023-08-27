@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { Footer, CartWidget } from "../../components/index";
+import { ScrollParallax } from "react-just-parallax";
 
 import { navigation } from "../../components/NavBar/constants";
 import { categories } from "../Categorias/constants";
@@ -360,23 +361,24 @@ export default function Home() {
               </div>
             </nav>
           </header>
-
-          <div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-[272px] lg:px-0">
-            <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">
-              New arrivals are here
-            </h1>
-            <p className="mt-4 text-xl text-white">
-              The new arrivals have, well, newly arrived. Check out the latest
-              options from our summer small-batch release while they're still in
-              stock.
-            </p>
-            <Link
-              to="#"
-              className="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100"
-            >
-              Shop New Arrivals
-            </Link>
-          </div>
+          <ScrollParallax scrollContainerRef>
+            <div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-[272px] lg:px-0">
+              <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">
+                New arrivals are here
+              </h1>
+              <p className="mt-4 text-xl text-white">
+                The new arrivals have, well, newly arrived. Check out the latest
+                options from our summer small-batch release while they're still
+                in stock.
+              </p>
+              <Link
+                to="#"
+                className="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100"
+              >
+                Shop New Arrivals
+              </Link>
+            </div>
+          </ScrollParallax>
         </section>
 
         <main>

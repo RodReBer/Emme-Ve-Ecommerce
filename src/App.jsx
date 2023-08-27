@@ -12,6 +12,7 @@ const App = () => {
           <ScrollToTop />
           <Routes>
             <Route index element={<Home />} />
+
             <Route path="*" element={<NoPage />} />
 
             <Route path="/productos" element={<Productos />} />

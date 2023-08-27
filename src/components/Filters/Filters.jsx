@@ -17,19 +17,6 @@ const sortOptions = [
 ];
 const filters = [
   {
-    id: "categoria",
-    name: "Categoría",
-    options: [
-      {
-        value: "todos-los-productos",
-        label: "Todos Los Productos",
-        checked: false,
-      },
-      { value: "tees", label: "Tees", checked: false },
-      { value: "objects", label: "Objects", checked: false },
-    ],
-  },
-  {
     id: "color",
     name: "Color",
     options: [
@@ -48,7 +35,7 @@ const filters = [
     ],
   },
 ];
-// const activeFilters = [{ value: 'todos-los-productos', label: 'Todos Los Productos' }]
+//  const activeFilters = [{ value: 'todos-los-productos', label: 'Todos Los Productos' }]
 const activeFilters = [];
 import { useParams } from "react-router-dom";
 

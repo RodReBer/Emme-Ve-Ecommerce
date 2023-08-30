@@ -1,11 +1,11 @@
-import { NavBar, Filters, ItemListConteiner, Footer } from "../../components";
+import { NavBar, Filters, ItemListContainer, Footer } from "../../components";
 
 const Categories = () => {
   return (
     <>
       <NavBar />
       <Filters />
-      <ItemListConteiner />
+      <ItemListContainer />
       <Footer />
     </>
   );

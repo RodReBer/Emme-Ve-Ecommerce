@@ -10,15 +10,16 @@ const ItemListContainer = () => {
 
   const categoryId = useParams().categoria;
 
+  const db = getFirestore();
+
+  const itemsCollection = collection(db, "items");
+
+  getDocs(itemsCollection).then((snapshot) => {
+    const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    setItems(docs);
+  });
+
   useEffect(() => {
-    const db = getFirestore();
-
-    const itemsCollection = collection(db, "items");
-
-    getDocs(itemsCollection).then((snapshot) => {
-      const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setItems(docs);
-    });
     const filterProducts = (category) => {
       return new Promise((resolve) => {
         if (category) {

@@ -1,17 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Product } from '../index';
-import { products } from '../constantsProducts';
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { Product } from "../index";
+import { products } from "../constantsProducts";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const  categoryId  = useParams().categoria;
+  const [items, setItems] = useState({});
+
+  const categoryId = useParams().categoria;
+
+  const db = getFirestore();
+
+  const itemsCollection = collection(db, "items");
+
+  getDocs(itemsCollection).then((snapshot) => {
+    const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    console.log(docs);
+  });
 
   useEffect(() => {
     const filterProducts = (category) => {
       return new Promise((resolve) => {
         if (category) {
-          const categoryProducts = products.filter(product => product.categoria === category);
+          const categoryProducts = products.filter(
+            (product) => product.categoria === category
+          );
           resolve(categoryProducts);
         } else {
           resolve(products);
@@ -20,10 +34,10 @@ const ItemListContainer = () => {
     };
 
     filterProducts(categoryId)
-      .then(filtered => {
+      .then((filtered) => {
         setFilteredProducts(filtered);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   }, [categoryId]);

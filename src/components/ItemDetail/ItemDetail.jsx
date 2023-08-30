@@ -8,6 +8,7 @@ import { useParams, Link } from "react-router-dom";
 import { NavBar, Footer, ItemCount } from "../index";
 import { listCartContext } from "../../contexts/CartContextProvider";
 import { useEffect } from "react";
+import { getDoc, getFirestore, doc } from "firebase/firestore";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -18,16 +19,28 @@ const ItemDetail = () => {
   const product = products.find((producto) => producto.id === id);
   const stock = product.stock;
 
+  const [item, setItem] = useState({});
+
+  useEffect(() => {
+    const db = getFirestore();
+    const itemRef = doc(db, "items", id);
+    getDoc(itemRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        setItem({ id: snapshot.id, ...snapshot.data() });
+      }
+    });
+    console.log(item);
+  }, [id]);
+
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.colors[0]);
-  
+
   useEffect(() => {
     if (product.colors.length > 0) {
       setSelectedColor(product.colors[0]);
       setSelectedSize(product.colors[0].sizes[0]);
     }
   }, [product.colors]);
-
 
   let { addProduct } = useContext(listCartContext);
 
@@ -145,7 +158,9 @@ const ItemDetail = () => {
                     }}
                     className="mt-2"
                   >
-                    <RadioGroup.Label className="sr-only">Elige un color</RadioGroup.Label>
+                    <RadioGroup.Label className="sr-only">
+                      Elige un color
+                    </RadioGroup.Label>
                     <span className="flex items-center space-x-3">
                       {product.colors.map((color) => (
                         <RadioGroup.Option
@@ -188,13 +203,14 @@ const ItemDetail = () => {
                     </Link>
                   </div>
 
-
                   <RadioGroup
                     value={selectedSize}
                     onChange={setSelectedSize}
                     className="mt-2"
                   >
-                    <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
+                    <RadioGroup.Label className="sr-only">
+                      Choose a size
+                    </RadioGroup.Label>
                     <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
                       {selectedColor.sizes.map((size) => (
                         <RadioGroup.Option
@@ -205,7 +221,9 @@ const ItemDetail = () => {
                               size.inStock
                                 ? "cursor-pointer focus:outline-none"
                                 : "cursor-not-allowed opacity-25",
-                              active ? "ring-2 ring-gray-500 ring-offset-2" : "",
+                              active
+                                ? "ring-2 ring-gray-500 ring-offset-2"
+                                : "",
                               checked
                                 ? "border-transparent bg-gray-800 text-white hover:bg-gray-900"
                                 : "border-gray-200 bg-white text-gray-900 hover:bg-gray-50",
@@ -214,7 +232,9 @@ const ItemDetail = () => {
                           }
                           disabled={!size.inStock}
                         >
-                          <RadioGroup.Label as="span">{size.name}</RadioGroup.Label>
+                          <RadioGroup.Label as="span">
+                            {size.name}
+                          </RadioGroup.Label>
                         </RadioGroup.Option>
                       ))}
                     </div>

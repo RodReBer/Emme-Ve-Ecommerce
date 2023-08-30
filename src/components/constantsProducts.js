@@ -29,9 +29,9 @@ const products = [
     ],
     colors: [
       {
-        name: 'Washed Black', 
-        bgColor: 'bg-gray-700', 
-        selectedColor: 'ring-gray-700', 
+        name: 'Washed Black',
+        bgColor: 'bg-gray-700',
+        selectedColor: 'ring-gray-700',
         sizes: [
           { name: 'S', inStock: true },
           { name: 'M', inStock: false },

@@ -18,6 +18,7 @@ const ItemListContainer = () => {
     const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     console.log(docs);
   });
+  console.log(products);
 
   useEffect(() => {
     const filterProducts = (category) => {

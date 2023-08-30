@@ -16,20 +16,19 @@ const ItemListContainer = () => {
 
   getDocs(itemsCollection).then((snapshot) => {
     const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    console.log(docs);
+    setItems(docs);
   });
-  console.log(products);
 
   useEffect(() => {
     const filterProducts = (category) => {
       return new Promise((resolve) => {
         if (category) {
-          const categoryProducts = products.filter(
+          const categoryProducts = items.filter(
             (product) => product.categoria === category
           );
           resolve(categoryProducts);
         } else {
-          resolve(products);
+          resolve(items);
         }
       });
     };

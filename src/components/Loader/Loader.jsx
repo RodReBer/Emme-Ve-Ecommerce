@@ -2,10 +2,7 @@ import img1 from "../../assets/logoNegro.avif";
 
 const Loader = () => {
   return (
-    <div className="h-screen relative top-2/4 right-2/4 left-2/4">
-      <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-        Loading...
-      </span>
+    <div className="flex items-center space-x-2 h-screen justify-center">
       <img
         src={img1}
         alt="logo"

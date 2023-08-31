@@ -1,14 +1,11 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Disclosure, RadioGroup, Tab } from "@headlessui/react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-
 import { useParams, Link } from "react-router-dom";
-import { ItemCount } from "../index";
+import { ItemCount, Loader } from "../index";
 import { listCartContext } from "../../contexts/CartContextProvider";
-import { useEffect } from "react";
 import { getDoc, getFirestore, doc } from "firebase/firestore";
-import Loader from "../Loader/Loader";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -215,7 +212,7 @@ const ItemDetail = () => {
                     <h2 className="text-sm font-medium text-gray-900">Size</h2>
                     <Link
                       to="#"
-                      className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                      className="text-sm font-medium text-gray-900 hover:text-gray-800"
                     >
                       See sizing chart
                     </Link>

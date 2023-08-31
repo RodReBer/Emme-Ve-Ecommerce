@@ -6,9 +6,9 @@ import {
   QuestionMarkCircleIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { CartWidget } from "../../components/index";
+import { CartWidget } from "../index";
 
-import { navigation } from "../../components/NavBar/constants";
+import { navigation } from "../NavBar/constants";
 
 import { Link } from "react-router-dom";
 import logoBlanco from "../../assets/logoBlanco.webp";

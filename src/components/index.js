@@ -9,5 +9,6 @@ import ItemCount from "./ItemCount/ItemCount"
 import AlertAddToCart from "./AlertAddToCart/AlertAddToCart"
 import ScrollToTop from "./ScrollToTop/ScrollToTop"
 import ProductsCart from "./ProductsCart/ProductsCart"
+import Loader from "./Loader/Loader"
 
-export { Footer, CartWidget, NavBar, Filters, ItemListContainer, ItemDetail, Product, ItemCount, AlertAddToCart, ScrollToTop, ProductsCart };
+export { Footer, CartWidget, NavBar, Filters, ItemListContainer, ItemDetail, Product, ItemCount, AlertAddToCart, ScrollToTop, ProductsCart, Loader };

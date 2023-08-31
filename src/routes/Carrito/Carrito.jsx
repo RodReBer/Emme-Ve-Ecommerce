@@ -2,13 +2,12 @@ import {
   QuestionMarkCircleIcon,
   CheckCircleIcon,
 } from "@heroicons/react/20/solid";
-
 import { listCartContext } from "../../contexts/CartContextProvider";
 import { NavBar, Footer, ProductsCart } from "../../components";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
+
 const deliveryMethods = [
   {
     id: 1,
@@ -103,7 +102,7 @@ export default function Carrito() {
                   type="submit"
                   className="w-full rounded-md border border-transparent bg-gray-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50"
                 >
-                  Finalizar compra
+                  Comprar ahora
                 </button>
               </div>
               <div className="mt-10 border-t border-gray-200 pt-10">

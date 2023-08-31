@@ -1,39 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Product } from "../index";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import Loader from "../Loader/Loader";
+import { Product, Loader } from "../index";
+import { getFirestore, collection, getDocs, orderBy, query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const categoryId = useParams().categoria;
-  const db = getFirestore();
-  const itemsCollection = collection(db, "items");
+
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const snapshot = await getDocs(itemsCollection);
-        const docs = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data(),}));
-
-        if (categoryId) {
-          const categoryProducts = docs.filter(
-            (product) => product.categoria === categoryId
-          );
-          setFilteredProducts(categoryProducts);
-        } else {
-          setFilteredProducts(docs);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    const db = getFirestore();
+    const queryCollections = categoryId ? collection(db, "items") : query(collection(db, "items"), orderBy("categoria", "asc"))
+    const queryFilter = categoryId ? query(queryCollections, where("categoria", "==", categoryId)) : queryCollections
+    getDocs(queryFilter)
+      .then(resp => setFilteredProducts(resp.docs.map(product => ({ id: product.id, ...product.data() }))))
+      .catch(err => console.error(err))
+      .finally(() => setLoading(false))
   }, [categoryId]);
 
   if (loading) {

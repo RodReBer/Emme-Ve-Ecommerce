@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import { Productos, Home, NoPage, Carrito } from "./routes/constants-pages";
-import { ItemDetail, ScrollToTop } from "./components/index";
+import { Productos, Home, NoPage, Carrito, DetailListContainer } from "./routes/constants-pages";
+import { ScrollToTop } from "./components/index";
 import CartContextProvider from "./contexts/CartContextProvider";
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
               element={<Productos />}
             />
 
-            <Route path="/productos/:id" element={<ItemDetail />} />
+            <Route path="/productos/:id" element={<DetailListContainer />} />
 
             <Route path="/carrito" element={<Carrito />} />
           </Routes>

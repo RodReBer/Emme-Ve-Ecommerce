@@ -3,54 +3,71 @@ import { Disclosure, RadioGroup, Tab } from "@headlessui/react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
-import { products } from "../constantsProducts";
 import { useParams, Link } from "react-router-dom";
-import { NavBar, Footer, ItemCount } from "../index";
+import { ItemCount } from "../index";
 import { listCartContext } from "../../contexts/CartContextProvider";
 import { useEffect } from "react";
 import { getDoc, getFirestore, doc } from "firebase/firestore";
+import Loader from "../Loader/Loader";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const ItemDetail = () => {
-  const id = parseInt(useParams().id);
-  const product = products.find((producto) => producto.id === id);
-  const stock = product.stock;
+  const [loading, setLoading] = useState(true); // Estado de carga
+  const id = useParams().id;
+  let { addProduct } = useContext(listCartContext);
 
   const [item, setItem] = useState({});
 
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const db = getFirestore();
+  const itemRef = doc(db, "items", id.toString());
+
   useEffect(() => {
-    const db = getFirestore();
-    const itemRef = doc(db, "items", id);
-    getDoc(itemRef).then((snapshot) => {
-      if (snapshot.exists()) {
-        setItem({ id: snapshot.id, ...snapshot.data() });
+    const fetchData = async () => {
+      try {
+        const snapshot = await getDoc(itemRef);
+  
+        if (snapshot.exists()) {
+          const itemData = { id: snapshot.id, ...snapshot.data() };
+          setItem(itemData);
+  
+          const availableColor = itemData.colors.find((color) =>
+            color.sizes.some((size) => size.inStock > 0)
+          );
+  
+          if (availableColor) {
+            setSelectedColor(availableColor);
+            setSelectedSize(availableColor.sizes.find((size) => size.inStock > 0));
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
       }
-    });
-    console.log(item);
+    };
+  
+    fetchData();
   }, [id]);
+  
 
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.colors[0]);
+  if (loading) {
+    return <Loader />;
+  }
 
-  useEffect(() => {
-    if (product.colors.length > 0) {
-      setSelectedColor(product.colors[0]);
-      setSelectedSize(product.colors[0].sizes[0]);
-    }
-  }, [product.colors]);
-
-  let { addProduct } = useContext(listCartContext);
+  const stock = item.stock;
+  const estaEnStock = item.inStock;
 
   const handleOnAdd = (cantidad) => {
-    addProduct(product, cantidad, selectedColor.name, selectedSize.name);
+    addProduct(item, cantidad, selectedColor.name, selectedSize.name);
   };
 
   return (
     <>
-      <NavBar />
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
@@ -59,7 +76,7 @@ const ItemDetail = () => {
               {/* Image selector */}
               <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
                 <Tab.List className="grid grid-cols-4 gap-6">
-                  {product.images.map((image) => (
+                  {item.images.map((image) => (
                     <Tab
                       key={image.id}
                       className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
@@ -89,7 +106,7 @@ const ItemDetail = () => {
               </div>
 
               <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
-                {product.images.map((image) => (
+                {item.images.map((image) => (
                   <Tab.Panel key={image.id}>
                     <img
                       src={image.src}
@@ -104,13 +121,13 @@ const ItemDetail = () => {
             {/* Product info */}
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
               <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-                {product.name}
+                {item.name}
               </h1>
 
               <div className="mt-3">
                 <h2 className="sr-only">Informaci&oacute;n del producto</h2>
                 <p className="text-3xl tracking-tight text-gray-900">
-                  ${product.price}
+                  ${item.price}
                 </p>
               </div>
 
@@ -123,7 +140,7 @@ const ItemDetail = () => {
                       <StarIcon
                         key={rating}
                         className={classNames(
-                          product.rating > rating
+                          item.rating > rating
                             ? "text-yellow-300"
                             : "text-gray-300",
                           "h-5 w-5 flex-shrink-0"
@@ -132,7 +149,7 @@ const ItemDetail = () => {
                       />
                     ))}
                   </div>
-                  <p className="sr-only">{product.rating} out of 5 stars</p>
+                  <p className="sr-only">{item.rating} out of 5 stars</p>
                 </div>
               </div>
 
@@ -141,7 +158,7 @@ const ItemDetail = () => {
 
                 <div
                   className="space-y-6 text-base text-gray-700"
-                  dangerouslySetInnerHTML={{ __html: product.description }}
+                  dangerouslySetInnerHTML={{ __html: item.description }}
                 />
               </div>
 
@@ -162,7 +179,7 @@ const ItemDetail = () => {
                       Elige un color
                     </RadioGroup.Label>
                     <span className="flex items-center space-x-3">
-                      {product.colors.map((color) => (
+                      {item.colors.map((color) => (
                         <RadioGroup.Option
                           key={color.name}
                           value={color}
@@ -247,6 +264,7 @@ const ItemDetail = () => {
                     inicial={1}
                     stock={stock}
                     onAdd={handleOnAdd}
+                    estaEnStock={estaEnStock}
                   ></ItemCount>
 
                   <button
@@ -268,7 +286,7 @@ const ItemDetail = () => {
                 </h2>
 
                 <div className="divide-y divide-gray-200 border-t">
-                  {product.details.map((detail) => (
+                  {item.details.map((detail) => (
                     <Disclosure as="div" key={detail.name}>
                       {({ open }) => (
                         <>
@@ -317,7 +335,6 @@ const ItemDetail = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

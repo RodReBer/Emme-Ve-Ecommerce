@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { products } from "../constantsProducts";
 
-const ItemCount = ({ stock, inicial, onAdd, id }) => {
+const ItemCount = ({ stock, inicial, onAdd, id, estaEnStock }) => {
   const [cantidad, setCantidad] = useState(inicial);
   const [inStock, setInStock] = useState(true);
   const [textCarrito, setTextCarrito] = useState("Agregar al carrito");
 
   useEffect(() => {
-    const producto = products.find((product) => product.id === id);
-    const productInStock = producto ? producto.inStock : false;
 
-    if (!productInStock) {
+    if (!estaEnStock) {
       setInStock(false);
       setTextCarrito("No disponible");
     } else {

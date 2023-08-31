@@ -28,15 +28,15 @@ const ItemDetail = () => {
     const fetchData = async () => {
       try {
         const snapshot = await getDoc(itemRef);
-  
+
         if (snapshot.exists()) {
           const itemData = { id: snapshot.id, ...snapshot.data() };
           setItem(itemData);
-  
+
           const availableColor = itemData.colors.find((color) =>
             color.sizes.some((size) => size.inStock > 0)
           );
-  
+
           if (availableColor) {
             setSelectedColor(availableColor);
             setSelectedSize(availableColor.sizes.find((size) => size.inStock > 0));
@@ -48,10 +48,10 @@ const ItemDetail = () => {
         setLoading(false);
       }
     };
-  
+
     fetchData();
   }, [id]);
-  
+
 
   if (loading) {
     return <Loader />;
@@ -169,7 +169,16 @@ const ItemDetail = () => {
                     value={selectedColor}
                     onChange={(color) => {
                       setSelectedColor(color);
-                      setSelectedSize(color.sizes[0]); // Seleccione el primer tamaño para el nuevo color
+                      setSelectedSize(() => {
+                        for (const size of color.sizes) {
+                          if (size.inStock) {
+                            return size;
+                          }
+                        }
+                        console.log("No hay tamaños en stock para este color.");
+                        return null;
+                      }); //se selecciona el primer talle que haya en stock de ese color
+
                     }}
                     className="mt-2"
                   >

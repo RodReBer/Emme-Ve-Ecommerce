@@ -438,9 +438,9 @@ export default function Home() {
             <div className="mt-6 px-4 sm:hidden">
               <Link
                 to="#"
-                className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500"
+                className="block text-sm font-semibold text-gray-900 hover:text-gray-800"
               >
-                Browse all categories
+                Navegar todas las categor&iacute;as
                 <span aria-hidden="true"> &rarr;</span>
               </Link>
             </div>

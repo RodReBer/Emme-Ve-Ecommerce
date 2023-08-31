@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Product } from "../index";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
-import Loader from "../Loader/Loader"; // Importa tu componente Loader aquí
+import Loader from "../Loader/Loader";
 
 const ItemListContainer = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [loading, setLoading] = useState(true); // Estado de carga
+  const [loading, setLoading] = useState(true);
 
   const categoryId = useParams().categoria;
   const db = getFirestore();

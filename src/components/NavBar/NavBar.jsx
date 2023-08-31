@@ -11,7 +11,7 @@ import { CartWidget } from "../../components/index";
 import { navigation } from "../../components/NavBar/constants";
 
 import { Link } from "react-router-dom";
-import logoBlanco from "../../assets/logoBlanco.avif";
+import logoBlanco from "../../assets/logoBlanco.webp";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { Footer, CartWidget } from "../../components/index";
 import { ScrollParallax } from "react-just-parallax";
-import img1 from "../../assets/36583.avif";
+import img1 from "../../assets/portada.webp";
 
 import { navigation } from "../../components/NavBar/constants";
 import { categories } from "../Categorias/constants";
@@ -46,7 +46,7 @@ const collections = [
       "Be more productive than enterprise project managers with a single piece of paper.",
   },
 ];
-import logoBlanco from "../../assets/logoBlanco.avif";
+import logoBlanco from "../../assets/logoBlanco.webp";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -363,7 +363,7 @@ export default function Home() {
             </nav>
           </header>
           <ScrollParallax scrollContainerRef>
-            <div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 pt-72 text-center sm:pt-96 lg:px-0">
+            <div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 pt-64 text-center sm:pt-72 lg:px-0">
               <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">
                 New arrivals are here
               </h1>
@@ -396,8 +396,8 @@ export default function Home() {
                 Comprar por categor&iacute;a
               </h2>
               <Link
-                to="#"
-                className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
+                to="/productos"
+                className="hidden text-sm font-semibold text-gray-900 hover:text-gray-800 sm:block"
               >
                 Navegar por todas las categorías
                 <span aria-hidden="true"> &rarr;</span>

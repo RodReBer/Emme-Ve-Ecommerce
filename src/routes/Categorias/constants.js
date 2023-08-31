@@ -1,7 +1,12 @@
 const categories = [
   {
+    name: 'Canguros',
+    to: '/productos/categoria/canguros',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-03.jpg'
+  },
+  {
     name: 'Tops / Bodies',
-    to: '/productos/categoria/tops',
+    to: '/productos/categoria/tops-bodies',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-01.jpg',
   },
   {
@@ -19,11 +24,7 @@ const categories = [
     to: '/productos/categoria/shorts',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-05.jpg',
   },
-  {
-    name: 'Sale',
-    to: '/productos/categoria/sale',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-03.jpg'
-  },
+
 ]
 
 export { categories };

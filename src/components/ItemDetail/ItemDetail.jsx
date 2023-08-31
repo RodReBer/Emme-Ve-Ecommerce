@@ -15,14 +15,15 @@ function classNames(...classes) {
 }
 
 const ItemDetail = () => {
-  const [loading, setLoading] = useState(true); // Estado de carga
   const id = useParams().id;
   let { addProduct } = useContext(listCartContext);
 
   const [item, setItem] = useState({});
 
+  const [loading, setLoading] = useState(true);
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
+
   const db = getFirestore();
   const itemRef = doc(db, "items", id.toString());
 

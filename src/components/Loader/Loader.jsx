@@ -1,4 +1,4 @@
-import img1 from "../../assets/logoNegro.avif";
+import img1 from "../../assets/logoNegro.webp";
 
 const Loader = () => {
   return (

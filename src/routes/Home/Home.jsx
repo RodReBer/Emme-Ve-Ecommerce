@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { Footer, CartWidget } from "../../components/index";
 import { ScrollParallax } from "react-just-parallax";
+import img1 from "../../assets/36583.avif";
 
 import { navigation } from "../../components/NavBar/constants";
 import { categories } from "../Categorias/constants";
@@ -182,7 +183,7 @@ export default function Home() {
           {/* Decorative image and overlay */}
           <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
             <img
-              src="https://tailwindui.com/img/ecommerce-images/home-page-01-hero-full-width.jpg"
+              src={img1}
               alt=""
               className="h-full w-full object-cover object-center"
             />

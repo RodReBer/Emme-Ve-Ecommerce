@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Product } from "../index";
-import { products } from "../constantsProducts";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const ItemListContainer = () => {

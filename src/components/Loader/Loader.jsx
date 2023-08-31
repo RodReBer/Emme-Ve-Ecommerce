@@ -1,14 +1,16 @@
+import img1 from "../../assets/logoNegro.avif";
+
 const Loader = () => {
   return (
     <div className="h-screen relative top-2/4 right-2/4 left-2/4">
-      <div
-        className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-gray-900 motion-reduce:animate-[spin_1.5s_linear_infinite]"
-        role="status"
-      >
-        <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-          Loading...
-        </span>
-      </div>
+      <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+        Loading...
+      </span>
+      <img
+        src={img1}
+        alt="logo"
+        className="inline-block h-16 w-h-16 animate-pulse align-[-0.125em] text-gray-900 motion-reduce:animate-[pulse_2.5s_linear_infinite]"
+      />
     </div>
     // <div
     //   aria-label="Loading..."

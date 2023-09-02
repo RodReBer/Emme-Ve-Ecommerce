@@ -1,4 +1,4 @@
-# E-Commerce de Ropa con React y Tailwind
+# E-Commerce con React y Tailwind
 
 ¡Bienvenido al repositorio del E-Commerce de Ropa desarrollado con React y Tailwind! Este proyecto es una aplicación de comercio electrónico que te permite explorar y comprar una amplia gama de prendas de vestir de moda. Utiliza la potencia de React y la flexibilidad de Tailwind CSS para brindarte una experiencia de usuario fluida y atractiva.
 

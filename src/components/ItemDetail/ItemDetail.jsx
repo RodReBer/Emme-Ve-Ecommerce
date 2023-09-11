@@ -85,7 +85,7 @@ const ItemDetail = () => {
                           <span className="absolute inset-0 overflow-hidden rounded-md">
                             <img
                               src={image.src}
-                              alt=""
+                              alt={image.alt}
                               className="h-full w-full object-cover object-center"
                             />
                           </span>

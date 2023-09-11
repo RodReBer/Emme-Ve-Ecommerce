@@ -10,5 +10,6 @@ import AlertAddToCart from "./AlertAddToCart/AlertAddToCart"
 import ScrollToTop from "./ScrollToTop/ScrollToTop"
 import ProductsCart from "./ProductsCart/ProductsCart"
 import Loader from "./Loader/Loader"
+import AlertSuccessfully from "./AlertSuccessfully/AlertSuccessfully"
 
-export { Footer, CartWidget, NavBar, Filters, ItemListContainer, ItemDetail, Product, ItemCount, AlertAddToCart, ScrollToTop, ProductsCart, Loader };
+export { Footer, CartWidget, NavBar, Filters, ItemListContainer, ItemDetail, Product, ItemCount, AlertAddToCart, ScrollToTop, ProductsCart, Loader, AlertSuccessfully };

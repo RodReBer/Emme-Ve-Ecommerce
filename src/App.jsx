@@ -8,6 +8,7 @@ import {
   Carrito,
   DetailListContainer,
   Envios,
+  Pago,
 } from "./routes/constants-pages";
 import { ScrollToTop } from "./components/index";
 
@@ -21,25 +22,25 @@ const routes = [
   { path: "/productos/:id", element: <DetailListContainer /> },
   { path: "/carrito", element: <Carrito /> },
   { path: "/envios", element: <Envios /> },
+  { path: "/pago", element: <Pago /> },
+
 ];
+
 const App = () => {
   const routeElements = routes.map((route) => (
-    <Route 
-    key={route.path} 
-    path={route.path} 
-    element={route.element} />
+    <Route key={route.path} path={route.path} element={route.element} />
   ));
+
   return (
     <CartContextProvider>
       <div className="h-full">
         <BrowserRouter>
           <ScrollToTop />
-          <Routes>
-            {routeElements}
-            </Routes>
+          <Routes>{routeElements}</Routes>
         </BrowserRouter>
       </div>
     </CartContextProvider>
   );
 };
+
 export default App;

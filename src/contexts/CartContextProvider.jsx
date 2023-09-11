@@ -1,15 +1,22 @@
 import React from "react";
 import { useState } from "react";
-import { AlertAddToCart } from "../components";
+import { AlertAddToCart, AlertSuccessfully } from "../components";
 
 export const listCartContext = React.createContext();
 
 const CartContextProvider = ({ children }) => {
   const [listCart, setListCart] = useState([]);
   const [notificationVisible, setNotificationVisible] = useState(false);
+  const [alertVisible, setAlertVisible] = useState(false);
+
+  const [priceShipping, setPriceShipping] = useState(0);
+
 
   const handleShowNotification = () => {
     setNotificationVisible(true);
+  };
+  const handleShowSuccessfull = () => {
+    setAlertVisible(true);
   };
 
   const updateProductQuantity = (productIdx, newQuantity) => {
@@ -98,9 +105,14 @@ const CartContextProvider = ({ children }) => {
         getListCart,
         updateProductQuantity,
         calculateTotal,
+        setPriceShipping,
+        priceShipping,
+        handleShowSuccessfull,
+        setAlertVisible,
       }}
     >
       {children}
+      {alertVisible && <AlertSuccessfully />}
       {notificationVisible && <AlertAddToCart />}
     </listCartContext.Provider>
   );

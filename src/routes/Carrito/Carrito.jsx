@@ -25,13 +25,13 @@ export default function Carrito() {
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
     deliveryMethods[0]
   );
-  let { getListCart, calculateTotal } =
+  let { getListCart, calculateTotal, setPriceShipping } =
     useContext(listCartContext);
   let products = getListCart();
 
-
   let subTotal = calculateTotal();
   let shipping = selectedDeliveryMethod.price;
+  setPriceShipping(shipping);
   let total = subTotal + shipping;
   return (
     <>
@@ -46,8 +46,19 @@ export default function Carrito() {
               <h2 id="cart-heading" className="sr-only">
                 Items in your shopping cart
               </h2>
-              {products.length == 0 ? <h3 className="text-3xl">El carrito est&aacute; vac&iacute;o, mira nuestros <Link to={`/productos`} className="hover:underline text-blue-600">productos</Link></h3> : <ProductsCart products={products} />
-              }
+              {products.length == 0 ? (
+                <h3 className="text-3xl">
+                  El carrito est&aacute; vac&iacute;o, mira nuestros{" "}
+                  <Link
+                    to={`/productos`}
+                    className="hover:underline text-blue-600"
+                  >
+                    productos
+                  </Link>
+                </h3>
+              ) : (
+                <ProductsCart products={products} />
+              )}
             </section>
 
             {/* Order summary */}
@@ -72,8 +83,8 @@ export default function Carrito() {
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <dt className="flex items-center text-sm text-gray-600">
                     <span>Env&iacute;o</span>
-                    <a
-                      href="#"
+                    <Link
+                      to="/envios"
                       className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
                     >
                       <span className="sr-only">
@@ -83,7 +94,7 @@ export default function Carrito() {
                         className="h-5 w-5"
                         aria-hidden="true"
                       />
-                    </a>
+                    </Link>
                   </dt>
                   <dd className="text-sm font-medium text-gray-900">
                     ${shipping}
@@ -98,13 +109,14 @@ export default function Carrito() {
               </dl>
 
               <div className="mt-6">
-                <button
-                  type="submit"
+                <Link
                   className="w-full rounded-md border border-transparent bg-gray-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                  to="/pago"
                 >
                   Comprar ahora
-                </button>
+                </Link>
               </div>
+
               <div className="mt-10 border-t border-gray-200 pt-10">
                 <RadioGroup
                   value={selectedDeliveryMethod}

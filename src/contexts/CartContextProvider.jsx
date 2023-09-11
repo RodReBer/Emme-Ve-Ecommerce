@@ -11,7 +11,6 @@ const CartContextProvider = ({ children }) => {
 
   const [priceShipping, setPriceShipping] = useState(0);
 
-
   const handleShowNotification = () => {
     setNotificationVisible(true);
   };
@@ -92,7 +91,6 @@ const CartContextProvider = ({ children }) => {
     );
     setListCart(updateList);
   };
-  
 
   return (
     <listCartContext.Provider

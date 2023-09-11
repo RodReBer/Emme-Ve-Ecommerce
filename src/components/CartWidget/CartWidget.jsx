@@ -7,8 +7,6 @@ const CartWidget = () => {
   let { getListCart } = useContext(listCartContext);
   let products = getListCart().length;
 
-
-
   return (
     <div className="ml-4 flow-root lg:ml-8">
       <Link to="/carrito" className="group -m-2 flex items-center p-2">

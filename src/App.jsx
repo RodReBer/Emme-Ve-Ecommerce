@@ -23,7 +23,6 @@ const routes = [
   { path: "/carrito", element: <Carrito /> },
   { path: "/envios", element: <Envios /> },
   { path: "/pago", element: <Pago /> },
-
 ];
 
 const App = () => {

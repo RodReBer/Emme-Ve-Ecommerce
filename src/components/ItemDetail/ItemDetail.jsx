@@ -39,7 +39,9 @@ const ItemDetail = () => {
 
           if (availableColor) {
             setSelectedColor(availableColor);
-            setSelectedSize(availableColor.sizes.find((size) => size.inStock > 0));
+            setSelectedSize(
+              availableColor.sizes.find((size) => size.inStock > 0)
+            );
           }
         }
       } catch (error) {
@@ -51,7 +53,6 @@ const ItemDetail = () => {
 
     fetchData();
   }, [id]);
-
 
   if (loading) {
     return <Loader />;
@@ -178,7 +179,6 @@ const ItemDetail = () => {
                         console.log("No hay tamaños en stock para este color.");
                         return null;
                       }); //se selecciona el primer talle que haya en stock de ese color
-
                     }}
                     className="mt-2"
                   >

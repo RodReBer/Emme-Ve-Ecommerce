@@ -6,7 +6,6 @@ const ItemCount = ({ stock, inicial, onAdd, id, estaEnStock }) => {
   const [textCarrito, setTextCarrito] = useState("Agregar al carrito");
 
   useEffect(() => {
-
     if (!estaEnStock) {
       setInStock(false);
       setTextCarrito("No disponible");

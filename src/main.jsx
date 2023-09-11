@@ -18,13 +18,12 @@ const firebaseConfig = {
   storageBucket: "emmeve-8dffb.appspot.com",
   messagingSenderId: "507701476114",
   appId: "1:507701476114:web:2df74c4b94ac572506d1cb",
-  measurementId: "G-DD493S3DTD"
+  measurementId: "G-DD493S3DTD",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

@@ -5,7 +5,6 @@ import { listCartContext } from "../../contexts/CartContextProvider";
 import { useContext, useState, Fragment } from "react";
 const pago = () => {
   const [validationError, setValidationError] = useState(false);
-  const [redirectTo, setRedirectTo] = useState(null);
 
   let {
     getListCart,
@@ -38,7 +37,6 @@ const pago = () => {
     // }
   };
 
-
   return (
     <>
       <NavBar />
@@ -54,7 +52,7 @@ const pago = () => {
         />
 
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-x-16 lg:grid-cols-2 lg:px-8 xl:gap-x-48">
-          <h1 className="sr-only">Order information</h1>
+          <h1 className="sr-only">Informaci&oacute;n de la orden de compra</h1>
 
           <section
             aria-labelledby="summary-heading"
@@ -96,10 +94,14 @@ const pago = () => {
                         {`$${product.price} `}
                       </p>
                       <p className="text-gray-500">
-                        {`(${product.cantidad} unidades)`}
+                        {product.cantidad > 1
+                          ? `(${product.cantidad} unidades)`
+                          : `(${product.cantidad} unidad)`}
                       </p>
                       <p className="text-gray-500">
-                        {`$${product.price * product.cantidad} en total`}
+                        {product.cantidad > 1
+                          ? `$${product.price * product.cantidad} en total`
+                          : ""}
                       </p>
                     </div>
                   </li>
@@ -457,7 +459,7 @@ const pago = () => {
                   className="w-full rounded-md border border-transparent bg-gray-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last sm:ml-6 sm:w-auto"
                   onClick={handleContinueClick} // Asociar la función aquí
                 >
-                  Continue
+                  Comprar
                 </button>
 
                 <p className="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-left">

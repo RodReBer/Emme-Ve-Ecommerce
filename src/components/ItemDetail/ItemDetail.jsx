@@ -131,7 +131,7 @@ const ItemDetail = () => {
 
               {/* Reviews */}
               <div className="mt-3">
-                <h3 className="sr-only">Reviews</h3>
+                <h3 className="sr-only">Opiniones</h3>
                 <div className="flex items-center">
                   <div className="flex items-center">
                     {[0, 1, 2, 3, 4].map((rating) => (
@@ -147,7 +147,7 @@ const ItemDetail = () => {
                       />
                     ))}
                   </div>
-                  <p className="sr-only">{item.rating} out of 5 stars</p>
+                  <p className="sr-only">{item.rating} de 5 estrellas</p>
                 </div>
               </div>
 
@@ -233,7 +233,7 @@ const ItemDetail = () => {
                     className="mt-2"
                   >
                     <RadioGroup.Label className="sr-only">
-                      Choose a size
+                      Selecciona un talle
                     </RadioGroup.Label>
                     <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
                       {selectedColor.sizes.map((size) => (

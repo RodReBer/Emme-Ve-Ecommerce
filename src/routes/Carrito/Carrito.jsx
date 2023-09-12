@@ -110,8 +110,15 @@ export default function Carrito() {
 
               <div className="mt-6">
                 <Link
-                  className="w-full rounded-md border border-transparent bg-gray-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-                  to="/pago"
+                  to={products.length === 0 ? "#" : "/pago"} // Agrega "#" como destino cuando esté deshabilitado
+                  className={`w-full rounded-md border border-transparent  px-4 py-3 text-base font-medium text-white shadow-sm   ${
+                    products.length === 0
+                      ? "cursor-not-allowed bg-gray-400"
+                      : "bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                  }`}
+                  onClick={(e) =>
+                    products.length === 0 ? e.preventDefault() : null
+                  } // Previene la navegación cuando está deshabilitado
                 >
                   Comprar ahora
                 </Link>
@@ -135,9 +142,11 @@ export default function Carrito() {
                           classNames(
                             checked ? "border-transparent" : "border-gray-300",
                             active ? "ring-2 ring-gray-500" : "",
-                            "relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none"
+                            "relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none",
+                            products.length === 0 ? "cursor-not-allowed" : ""
                           )
                         }
+                        disabled={products.length === 0}
                       >
                         {({ checked, active }) => (
                           <>

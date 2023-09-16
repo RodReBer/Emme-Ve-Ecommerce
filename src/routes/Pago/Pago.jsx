@@ -3,9 +3,12 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { listCartContext } from "../../contexts/CartContextProvider";
 import { useContext, useState, Fragment } from "react";
+import firebase from "firebase/app";
+import "firebase/firestore";
+
 const pago = () => {
   const [validationError, setValidationError] = useState(false);
-
+  const firestore = firebase.firestore();
   let {
     getListCart,
     calculateTotal,
@@ -16,25 +19,32 @@ const pago = () => {
   } = useContext(listCartContext);
   let products = getListCart();
 
-  const handleContinueClick = (e) => {
-    e.preventDefault(); // Evita que el formulario se envíe
-    handleShowSuccessfull();
-    clearCart();
+  const handleContinueClick = async (e) => {
+    e.preventDefault();
 
-    setTimeout(() => {
-      setAlertVisible(false);
-    }, 3000);
-    // // Realiza la validación aquí, por ejemplo:
-    // if (
-    //   !validateEmail(email) ||
-    //   !validateCardNumber(cardNumber) /* Agregar otras validaciones aquí */
-    // ) {
-    //   setValidationError(true);
-    // } else {
-    //   // Si la validación es exitosa, puedes continuar con la siguiente acción, como enviar el formulario.
-    //   setValidationError(false);
-    //   // Continuar con la acción deseada, como enviar el formulario o navegar a la siguiente página.
-    // }
+    const formData = {
+      email: document.getElementById("email-address").value,
+      nameOnCard: document.getElementById("name-on-card").value,
+      company: document.getElementById("company").value,
+      address: document.getElementById("address").value,
+      apartment: document.getElementById("apartment").value,
+      city: document.getElementById("city").value,
+      region: document.getElementById("region").value,
+      postalCode: document.getElementById("postal-code").value,
+    };
+
+    try {
+      await firestore.collection("orders").add(formData);
+
+      handleShowSuccessfull();
+      clearCart();
+
+      setTimeout(() => {
+        setAlertVisible(false);
+      }, 3000);
+    } catch (error) {
+      console.error("Error sending data to Firebase:", error);
+    }
   };
 
   return (

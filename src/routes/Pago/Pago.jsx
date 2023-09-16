@@ -23,14 +23,23 @@ const pago = () => {
     e.preventDefault();
 
     const formData = {
-      email: document.getElementById("email-address").value,
-      nameOnCard: document.getElementById("name-on-card").value,
-      company: document.getElementById("company").value,
-      address: document.getElementById("address").value,
-      apartment: document.getElementById("apartment").value,
-      city: document.getElementById("city").value,
-      region: document.getElementById("region").value,
-      postalCode: document.getElementById("postal-code").value,
+      contactInformation: {
+        email: document.getElementById("email-address").value,
+      },
+      paymentDetails: {
+        nameOnCard: document.getElementById("name-on-card").value,
+        cardNumber: document.getElementById("card-number").value,
+        expirationDate: document.getElementById("expiration-date").value,
+        cvc: document.getElementById("cvc").value,
+      },
+      shippingAddress: {
+        company: document.getElementById("company").value,
+        address: document.getElementById("address").value,
+        apartment: document.getElementById("apartment").value,
+        city: document.getElementById("city").value,
+        region: document.getElementById("region").value,
+        postalCode: document.getElementById("postal-code").value,
+      },
     };
 
     try {

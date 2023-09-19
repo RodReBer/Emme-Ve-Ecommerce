@@ -3,7 +3,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { listCartContext } from "../../contexts/CartContextProvider";
 import { useContext, useState, Fragment } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { db } from "../../firestore/firestore";
 
 const pago = () => {
@@ -22,16 +22,16 @@ const pago = () => {
     e.preventDefault();
 
     const formData = {
-      contactInformation: {
+      InformacionDeContacto: {
         email: document.getElementById("email-address").value,
       },
-      paymentDetails: {
+      DetallesDePago: {
         nameOnCard: document.getElementById("name-on-card").value,
         cardNumber: document.getElementById("card-number").value,
         expirationDate: document.getElementById("expiration-date").value,
         cvc: document.getElementById("cvc").value,
       },
-      shippingAddress: {
+      DireccionDeEnvio: {
         company: document.getElementById("company").value,
         address: document.getElementById("address").value,
         apartment: document.getElementById("apartment").value,
@@ -39,7 +39,8 @@ const pago = () => {
         region: document.getElementById("region").value,
         postalCode: document.getElementById("postal-code").value,
       },
-      items: products,
+      Productos: products,
+      Fecha: Timestamp.fromDate(new Date()),
     };
 
     try {
@@ -47,6 +48,9 @@ const pago = () => {
       await addDoc(ordersCollection, formData);
       handleShowSuccessfull();
       clearCart();
+
+      const form = document.getElementById("id-form-pago");
+      form.reset();
 
       setTimeout(() => {
         setAlertVisible(false);
@@ -205,7 +209,10 @@ const pago = () => {
             </div>
           </section>
 
-          <form className="px-4 pb-36 pt-16 sm:px-6 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-16">
+          <form
+            id="id-form-pago"
+            className="px-4 pb-36 pt-16 sm:px-6 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-16"
+          >
             <div className="mx-auto max-w-lg lg:max-w-none">
               <section aria-labelledby="contact-info-heading">
                 <h2

@@ -179,7 +179,7 @@ export default function Home() {
         </Transition.Root>
 
         {/* Hero section */}
-        <section className="relative bg-[#b67484] h-screen">
+        <section className="relative bg-gray-900 h-screen">
           {/* Decorative image and overlay */}
           <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
             <img
@@ -197,7 +197,7 @@ export default function Home() {
           <header className="fixed z-10 left-0 top-0 right-0">
             <nav aria-label="Top">
               {/* Secondary navigation */}
-              <div className="bg-[#b67484] bg-opacity-50 backdrop-blur-md backdrop-filter">
+              <div className="bg-gray-900 bg-opacity-50 backdrop-blur-md backdrop-filter">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                   <div>
                     <div className="flex h-16 items-center justify-between">

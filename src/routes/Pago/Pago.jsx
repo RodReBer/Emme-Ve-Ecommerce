@@ -3,8 +3,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { listCartContext } from "../../contexts/CartContextProvider";
 import { useContext, useState, Fragment } from "react";
-import firebase from "firebase/app";
-import "firebase/firestore";
+import { firebase } from "firebase/app";
 
 const pago = () => {
   const [validationError, setValidationError] = useState(false);

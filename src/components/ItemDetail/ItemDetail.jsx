@@ -246,11 +246,11 @@ const ItemDetail = () => {
                                 ? "cursor-pointer focus:outline-none"
                                 : "cursor-not-allowed opacity-25",
                               active
-                                ? "ring-2 ring-[#b67484] ring-offset-2"
+                                ? "ring-2 ring-gray-900 ring-offset-2"
                                 : "",
                               checked
-                                ? "border-transparent bg-[#b67484] text-white hover:bg-[#b67484]"
-                                : "border-[#b67484]/50 bg-white text-gray-900 hover:bg-gray-50",
+                                ? "border-transparent bg-gray-900 text-white hover:bg-gray-900"
+                                : "border-gray-900/50 bg-white text-gray-900 hover:bg-gray-50",
                               "flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1"
                             )
                           }

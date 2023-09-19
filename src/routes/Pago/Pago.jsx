@@ -4,7 +4,7 @@ import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { listCartContext } from "../../contexts/CartContextProvider";
 import { useContext, useState, Fragment } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../services/firebase/firebaseConfig";
+import { db } from "../../firestore/firestore";
 
 const pago = () => {
   const [validationError, setValidationError] = useState(false);
@@ -39,11 +39,12 @@ const pago = () => {
         region: document.getElementById("region").value,
         postalCode: document.getElementById("postal-code").value,
       },
+      items: products,
     };
 
     try {
-      await db.collection("orders").add(formData);
-
+      const ordersCollection = collection(db, "orders");
+      await addDoc(ordersCollection, formData);
       handleShowSuccessfull();
       clearCart();
 

@@ -3,11 +3,11 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { listCartContext } from "../../contexts/CartContextProvider";
 import { useContext, useState, Fragment } from "react";
-import { firebase } from "firebase/app";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../services/firebase/firebaseConfig";
 
 const pago = () => {
   const [validationError, setValidationError] = useState(false);
-  const firestore = firebase.firestore();
   let {
     getListCart,
     calculateTotal,
@@ -42,7 +42,7 @@ const pago = () => {
     };
 
     try {
-      await firestore.collection("orders").add(formData);
+      await db.collection("orders").add(formData);
 
       handleShowSuccessfull();
       clearCart();

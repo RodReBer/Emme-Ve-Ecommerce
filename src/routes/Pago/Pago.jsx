@@ -18,46 +18,113 @@ const pago = () => {
   } = useContext(listCartContext);
   let products = getListCart();
 
-  const handleContinueClick = async (e) => {
-    e.preventDefault();
+  const [formData, setFormData] = useState({
+    email: "",
+    nombreDeTarjeta: "",
+    numeroDeTarjeta: "",
+    vencimiento: "",
+    cvc: "",
+    compania: "",
+    direccion: "",
+    puerta: "",
+    ciudad: "",
+    esquina: "",
+    codigoPostal: "",
+  });
 
-    const formData = {
-      InformacionDeContacto: {
-        email: document.getElementById("email-address").value,
-      },
-      DetallesDePago: {
-        nameOnCard: document.getElementById("name-on-card").value,
-        cardNumber: document.getElementById("card-number").value,
-        expirationDate: document.getElementById("expiration-date").value,
-        cvc: document.getElementById("cvc").value,
-      },
-      DireccionDeEnvio: {
-        company: document.getElementById("company").value,
-        address: document.getElementById("address").value,
-        apartment: document.getElementById("apartment").value,
-        city: document.getElementById("city").value,
-        region: document.getElementById("region").value,
-        postalCode: document.getElementById("postal-code").value,
-      },
-      Productos: products,
-      Fecha: Timestamp.fromDate(new Date()),
-    };
+  const validateData = () => {
+    let correcto = false;
+    let mensaje = "";
+    if (
+      formData.email == "" ||
+      formData.nombreDeTarjeta == "" ||
+      formData.numeroDeTarjeta == "" ||
+      formData.vencimiento == "" ||
+      formData.cvc == "" ||
+      formData.compania == "" ||
+      formData.direccion == "" ||
+      formData.puerta == "" ||
+      formData.ciudad == "" ||
+      formData.esquina == "" ||
+      formData.codigoPostal == ""
+    ) {
+      mensaje = "Complete todos los campos";
 
-    try {
-      const ordersCollection = collection(db, "orders");
-      await addDoc(ordersCollection, formData);
-      handleShowSuccessfull();
-      clearCart();
-
-      const form = document.getElementById("id-form-pago");
-      form.reset();
-
-      setTimeout(() => {
-        setAlertVisible(false);
-      }, 3000);
-    } catch (error) {
-      console.error("Error sending data to Firebase:", error);
+      correcto = false;
+    } else {
+      mensaje = "Todos los datos son correctos";
+      correcto = true;
     }
+    return [correcto, mensaje];
+  };
+
+  const addOrder = (evt) => {
+    evt.preventDefault();
+    const order = {};
+    let idOrder = "vacio";
+    if (validateData()[0]) {
+      const dateOrder = new Date();
+      order.comprador = formData;
+      order.productos = products.map(
+        ({ name, price, cantidad, colorSeleccionado, talleSeleccionado }) => ({
+          name,
+          price,
+          cantidad,
+          colorSeleccionado,
+          talleSeleccionado,
+        })
+      );
+      order.total = calculateTotal();
+      order.fecha = {
+        dia: `
+        ${dateOrder.getDate()}/
+        ${dateOrder.getMonth() + 1}/
+        ${dateOrder.getFullYear()}`,
+        hora: `
+        ${dateOrder.getHours() < 10 ? "0" : ""}
+        ${dateOrder.getHours()}:
+        ${dateOrder.getMinutes() < 10 ? "0" : ""}
+        ${dateOrder.getMinutes()}`,
+      };
+    } else {
+      console.error(validateData()[1]);
+    }
+    const ordersCollection = collection(db, "orders");
+    const form = document.getElementById("id-form-pago");
+
+    addDoc(ordersCollection, order)
+      .then((resp) => (idOrder = resp.id))
+      .then(() => {
+        form.reset();
+        handleShowSuccessfull();
+
+        setTimeout(() => {
+          setAlertVisible(false);
+        }, 3000);
+      })
+      .then(clearCart())
+      .catch((err) => console.error(err))
+      .finally(() => {
+        setFormData({
+          email: "",
+          nombreDeTarjeta: "",
+          numeroDeTarjeta: "",
+          vencimiento: "",
+          cvc: "",
+          compania: "",
+          direccion: "",
+          puerta: "",
+          ciudad: "",
+          esquina: "",
+          codigoPostal: "",
+        });
+      });
+  };
+  const handleOnChange = (evt) => {
+    setFormData({
+      ...formData,
+      [evt.target.name]: evt.target.value,
+    });
   };
 
   return (
@@ -210,6 +277,7 @@ const pago = () => {
           </section>
 
           <form
+            onSubmit={addOrder}
             id="id-form-pago"
             className="px-4 pb-36 pt-16 sm:px-6 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-16"
           >
@@ -224,16 +292,17 @@ const pago = () => {
 
                 <div className="mt-6">
                   <label
-                    htmlFor="email-address"
+                    htmlFor="email"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Correo electr&oacute;nico
                   </label>
                   <div className="mt-1">
                     <input
+                      onChange={handleOnChange}
                       type="email"
-                      id="email-address"
-                      name="email-address"
+                      id="email"
+                      name="email"
                       autoComplete="email"
                       className="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                       required
@@ -253,16 +322,17 @@ const pago = () => {
                 <div className="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
                   <div className="col-span-3 sm:col-span-4">
                     <label
-                      htmlFor="name-on-card"
+                      htmlFor="nombreDeTarjeta"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Nombre en la tarjeta
                     </label>
                     <div className="mt-1">
                       <input
+                        onChange={handleOnChange}
                         type="text"
-                        id="name-on-card"
-                        name="name-on-card"
+                        id="nombreDeTarjeta"
+                        name="nombreDeTarjeta"
                         autoComplete="cc-name"
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                         required
@@ -272,16 +342,17 @@ const pago = () => {
 
                   <div className="col-span-3 sm:col-span-4">
                     <label
-                      htmlFor="card-number"
+                      htmlFor="numeroDeTarjeta"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Numero de tarjeta
                     </label>
                     <div className="mt-1">
                       <input
+                        onChange={handleOnChange}
                         type="text"
-                        id="card-number"
-                        name="card-number"
+                        id="numeroDeTarjeta"
+                        name="numeroDeTarjeta"
                         autoComplete="cc-number"
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                         required
@@ -291,16 +362,17 @@ const pago = () => {
 
                   <div className="col-span-2 sm:col-span-3">
                     <label
-                      htmlFor="expiration-date"
+                      htmlFor="vencimiento"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Vencimiento (MM/AA)
                     </label>
                     <div className="mt-1">
                       <input
+                        onChange={handleOnChange}
                         type="text"
-                        name="expiration-date"
-                        id="expiration-date"
+                        name="vencimiento"
+                        id="vencimiento"
                         autoComplete="cc-exp"
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                         required
@@ -317,6 +389,7 @@ const pago = () => {
                     </label>
                     <div className="mt-1">
                       <input
+                        onChange={handleOnChange}
                         type="text"
                         name="cvc"
                         id="cvc"
@@ -340,16 +413,17 @@ const pago = () => {
                 <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
                   <div className="sm:col-span-3">
                     <label
-                      htmlFor="company"
+                      htmlFor="compania"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Compan&iacute;a
                     </label>
                     <div className="mt-1">
                       <input
+                        onChange={handleOnChange}
                         type="text"
-                        id="company"
-                        name="company"
+                        id="compania"
+                        name="compania"
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                         required
                       />
@@ -358,16 +432,17 @@ const pago = () => {
 
                   <div className="sm:col-span-3">
                     <label
-                      htmlFor="address"
+                      htmlFor="direccion"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Direcci&oacute;n
                     </label>
                     <div className="mt-1">
                       <input
+                        onChange={handleOnChange}
                         type="text"
-                        id="address"
-                        name="address"
+                        id="direccion"
+                        name="direccion"
                         autoComplete="street-address"
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                         required
@@ -377,16 +452,17 @@ const pago = () => {
 
                   <div className="sm:col-span-3">
                     <label
-                      htmlFor="apartment"
+                      htmlFor="puerta"
                       className="block text-sm font-medium text-gray-700"
                     >
                       N&uacute;mero de puerta / Apartamento
                     </label>
                     <div className="mt-1">
                       <input
+                        onChange={handleOnChange}
                         type="text"
-                        id="apartment"
-                        name="apartment"
+                        id="puerta"
+                        name="puerta"
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                         required
                       />
@@ -395,16 +471,17 @@ const pago = () => {
 
                   <div>
                     <label
-                      htmlFor="city"
+                      htmlFor="ciudad"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Ciudad
                     </label>
                     <div className="mt-1">
                       <input
+                        onChange={handleOnChange}
                         type="text"
-                        id="city"
-                        name="city"
+                        id="ciudad"
+                        name="ciudad"
                         autoComplete="address-level2"
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                         required
@@ -414,16 +491,17 @@ const pago = () => {
 
                   <div>
                     <label
-                      htmlFor="region"
+                      htmlFor="esquina"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Esquina
                     </label>
                     <div className="mt-1">
                       <input
+                        onChange={handleOnChange}
                         type="text"
-                        id="region"
-                        name="region"
+                        id="esquina"
+                        name="esquina"
                         autoComplete="address-level1"
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                         required
@@ -433,16 +511,17 @@ const pago = () => {
 
                   <div>
                     <label
-                      htmlFor="postal-code"
+                      htmlFor="codigoPostal"
                       className="block text-sm font-medium text-gray-700"
                     >
                       C&oacute;digo postal
                     </label>
                     <div className="mt-1">
                       <input
+                        onChange={handleOnChange}
                         type="text"
-                        id="postal-code"
-                        name="postal-code"
+                        id="codigoPostal"
+                        name="codigoPostal"
                         autoComplete="postal-code"
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                         required
@@ -483,7 +562,6 @@ const pago = () => {
                 <button
                   type="submit"
                   className="w-full rounded-md border border-transparent bg-gray-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last sm:ml-6 sm:w-auto"
-                  onClick={handleContinueClick} // Asociar la función aquí
                 >
                   Comprar
                 </button>

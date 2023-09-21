@@ -74,7 +74,7 @@ const pago = () => {
           talleSeleccionado,
         })
       );
-      order.total = calculateTotal();
+      order.total = calculateTotal() + priceShipping();
       order.fecha = {
         dia: `
         ${dateOrder.getDate()}/
